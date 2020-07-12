@@ -34,6 +34,6 @@ class Solution:
 
 if __name__ == '__main__':
     j = Solution()
-    c = 11 #二进制转成十进制的数字
+    c = 11  # 二进制转成十进制的数字
     a = j.hammingWeight(c)
     print(a)

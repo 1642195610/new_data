@@ -1,4 +1,4 @@
-#判断链表是否有环
+# 判断链表是否有环
 
 # class Node:
 #     def __init__(self,data):

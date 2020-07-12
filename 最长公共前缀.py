@@ -41,30 +41,30 @@ class Solution:
         publicWord = []
         for i in range(minLength):
             for word in strs:
-                publicWord.append(word[:i+1])
+                publicWord.append(word[:i + 1])
             if len(set(publicWord)) == 1:
                 publicWord = []
             else:
                 return strs[0][:i]
-        if len(strs) <= 2 :
+        if len(strs) <= 2:
             if len(strs[0]) == 1:
                 return strs[0]
             elif len(strs[0]) == 2:
-                i = min(len(strs[0]),len(strs[1]))
+                i = min(len(strs[0]), len(strs[1]))
                 return strs[0][:i]
 
 
 if __name__ == '__main__':
     j = Solution()
-    a = j.longestCommonPrefix(["flower","flow","flight"])
+    a = j.longestCommonPrefix(["flower", "flow", "flight"])
     print(a)
     a = j.longestCommonPrefix(["a"])
     print(a)
-    a = j.longestCommonPrefix(["c","c"])
+    a = j.longestCommonPrefix(["c", "c"])
     print(a)
-    a = j.longestCommonPrefix(["aa","a"])
+    a = j.longestCommonPrefix(["aa", "a"])
     print(a)
-    a = j.longestCommonPrefix(["aaa","aa","aaa"])
+    a = j.longestCommonPrefix(["aaa", "aa", "aaa"])
     print(a)
 
 
@@ -88,7 +88,6 @@ if __name__ == '__main__':
 # minLength = min([len(s) for s in strs])
 # print(minLength)
 
-from typing import List
 
 # def longestCommonPrefix(strs: List[str]):
 #     if len(strs) == 0 or "" in strs:

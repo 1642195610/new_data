@@ -240,5 +240,3 @@ if __name__ == "__main__":
     print("链表为: %s" % (j))
     j.remove(3)
     print("删除后链表为: %s" % (j))
-
-

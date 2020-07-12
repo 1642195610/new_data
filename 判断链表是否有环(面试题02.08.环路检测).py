@@ -23,12 +23,13 @@
 
 
 class ListNode:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
         self.next = None
 
     def __repr__(self):
         return f"Node({self.data})"
+
 
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
@@ -43,7 +44,7 @@ class Solution:
                     curr = curr.next
                     prev = prev.next
                 return curr
-        return  None
+        return None
 
 
 if __name__ == '__main__':
@@ -55,7 +56,6 @@ if __name__ == '__main__':
     j2.next = j3
     j3.next = j1
     print(s.detectCycle(j1))
-
 
 
 # class Node:

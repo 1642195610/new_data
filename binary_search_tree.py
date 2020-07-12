@@ -17,8 +17,10 @@ class Node:
     def __repr__(self):
         if self.left is None and self.right is None:
             return str(self.value)
-        return pformat({"%s" % (self.value): (self.left, self.right)}, indent=1)
+        return pformat({"%s" % (self.value): (
+            self.left, self.right)}, indent=1)
         # 结点:(结点的左孩子,结点的右孩子)
+
 
 class BinarySearchTree:
     def __init__(self, root=None):
@@ -48,10 +50,10 @@ class BinarySearchTree:
                         parent_node = parent_node.left  # 如果父节点左侧不空,那么判断结点下移
                 elif value >= parent_node.value:  # 如果插入值大于父结点的值
                     if parent_node.right is None:  # 如果父结点右节点是空
-                        parent_node.right = new_node # 把插入值设为右节点
+                        parent_node.right = new_node  # 把插入值设为右节点
                         break
                     else:
-                        parent_node = parent_node.right # 如果父节点右侧不空,那么判断结点下移
+                        parent_node = parent_node.right  # 如果父节点右侧不空,那么判断结点下移
             new_node.parent = parent_node  # 指定一下新结点的父结点
 
     def insert(self, *values):  # 不定长参数
@@ -132,7 +134,8 @@ class BinarySearchTree:
         """left, right, self"""
         node_list = list()
         if curr_node is not None:
-            node_list = self.postorder(curr_node.left) + self.postorder(curr_node.right) + [curr_node]
+            node_list = self.postorder(
+                curr_node.left) + self.postorder(curr_node.right) + [curr_node]
         return node_list
 
     def traversal(self, method=None):
@@ -169,4 +172,3 @@ t.search(6)
 # for i in testlist:
 #     t.insert(i)
 # print(t)
-

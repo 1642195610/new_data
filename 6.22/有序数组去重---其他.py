@@ -25,7 +25,6 @@
 #     print(s.removeDuplicated([1, 1, 2, 2, 3, 4]))
 
 
-
 # 第一种(1):
 # from typing import List
 #
@@ -49,7 +48,7 @@
 #     s = Solution()
 #     print(s.removeDuplicated([1, 1, 2, 2, 3, 4]))
 
-#第二种:
+# 第二种:
 # from typing import List
 #
 #
@@ -65,13 +64,6 @@
 #                 nums[slow] = nums[fast]
 #                 fast += 1
 #         return slow + 1
-
-
-
-
-
-
-
 
 
 # from typing import List
@@ -153,7 +145,7 @@
 #     print("删除元素后链表为: %s"%(j))
 
 
-#判断链表是否有环
+# 判断链表是否有环
 
 # class Node:
 #     def __init__(self,data):
@@ -179,8 +171,3 @@
 #     j2.next = j3
 #     j3.next = j1
 #     print(pan(j1))
-
-
-
-
-

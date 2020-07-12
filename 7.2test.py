@@ -1,12 +1,13 @@
 class Node:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
         self.next = None
 
     def __repr__(self):
         return f"Node{self.data}"
 
-def pop(head,val):
+
+def pop(head, val):
     if head is None:
         raise Exception("为空!!!")
     else:
@@ -20,11 +21,13 @@ def pop(head,val):
                 curr = curr.next
     return f_false.next
 
+
 def print_list(head):
     curr = head
     while curr:
-        print("%s --> "%curr.data,end=" ")
+        print("%s --> " % curr.data, end=" ")
         curr = curr.next
+
 
 if __name__ == '__main__':
     j1 = Node(10)
@@ -38,5 +41,5 @@ if __name__ == '__main__':
     j4.next = j5
     j5.next = None
     print(print_list(j1))
-    a = pop(j1,10)
+    a = pop(j1, 10)
     print(print_list(a))

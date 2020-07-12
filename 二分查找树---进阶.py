@@ -102,51 +102,49 @@ class Bst:
             self.__insert(value)
         return self.root
     # 前序遍历:
-    def fater(self,node):
+
+    def fater(self, node):
         if node is None:
             return
-        print("%s"%node.value,end=" ")
+        print("%s" % node.value, end=" ")
         self.fater(node.left)
         self.fater(node.right)
         return node
 
     # 中序遍历:
-    def center(self,node):
+    def center(self, node):
         if node is None:
             return
         self.center(node.left)
-        print("%s"%node.value,end=" ")
+        print("%s" % node.value, end=" ")
         self.center(node.right)
         return node
 
     # 后序遍历:
-    def not_fater(self,node):
+    def not_fater(self, node):
         if node is None:
             return
         self.not_fater(node.left)
         self.not_fater(node.right)
-        print("%s"%node.value,end=" ")
+        print("%s" % node.value, end=" ")
         return node
-
-
 
 
 if __name__ == '__main__':
     j = Bst()
-    a = j.insert(8, 5, 10, 6, 4)
+    a = j.insert(2, 5, 4, 7, 9)
     print("删除前树为: %s" % a)
     print("查找的树为: %s" % j.find(4))
-    print("删除的树为: %s" % j.remove(10))
+    # print("删除的树为: %s" % j.remove(4))
     print("删除后树为: %s" % a)
-    print("前序遍历为: 中左右: %s"%a,end=" ")
+    print("前序遍历为: 中左右: %s" % a, end=" ")
     j.fater(j.root)
     print()
-    print("中序遍历为: 左中右: %s"%a,end=" ")
+    print("中序遍历为: 左中右: %s" % a, end=" ")
     j.center(j.root)
     print()
-    print("后序遍历为: 左右中: %s"%a,end=" ")
+    print("后序遍历为: 左右中: %s" % a, end=" ")
     j.not_fater(j.root)
-
 
 
 # from pprint import pformat
@@ -214,7 +212,76 @@ if __name__ == '__main__':
 #     print("删除前树为: %s"%a)
 
 
-
-
-
-
+# from pprint import pformat
+#
+#
+# class Node:
+#     def __init__(self,value,parent):
+#         self.value = value
+#         self.left = None
+#         self.right = None
+#         self.parent = parent
+#
+#     def __repr__(self):
+#         if self.left is None and self.right is None:
+#             return str(self.value)
+#         return pformat({"%s"%(self.value):(self.left,self.right)},indent=3)
+#
+#
+# class Bst:
+#     def __init__(self,root=None):
+#         self.root = root
+#
+#     def is_empty(self):
+#         if self.root is None:
+#             return True
+#         else:
+#             return False
+#
+#     def __str__(self):
+#         return str(self.root)
+#
+#     def is_right(self,node):
+#         return node == node.parent.right
+#
+#     def __insert(self,value):
+#         new_node = Node(value,None)
+#         if self.is_empty():
+#             self.root = new_node
+#         else:
+#             parent_node = self.root
+#             while True:
+#                 if value < parent_node.value:
+#                     if parent_node.left is None:
+#                         parent_node.left = new_node
+#                         break
+#                     else:
+#                         parent_node = parent_node.left
+#                 elif value >= parent_node.value:
+#                     if parent_node.right is None:
+#                         parent_node.right = new_node
+#                         break
+#                     else:
+#                         parent_node = parent_node.right
+#             new_node.parent = parent_node
+#
+#     def insert(self,*args):
+#         for value in args:
+#             self.__insert(value)
+#         return self.root
+#
+#     def find(self,value):
+#         if self.is_empty():
+#             raise IndexError("空树就不要查找啦,找也找不到哒!!!")
+#         else:
+#             node = self.root
+#             while node and node.value != value:
+#                node = node.left if value < node.value else node.right
+#             return node
+#
+#
+# if __name__ == '__main__':
+#     j = Bst()
+#     z = j.insert(9,7,1,5,6,0)
+#     print("原二分查找树: ",format(z))
+#     print("要查找的值为: ",format(j.find(0)))

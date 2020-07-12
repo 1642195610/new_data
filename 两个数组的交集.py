@@ -40,11 +40,7 @@ class Solution:
         return list(nums_set)
 
 
-
-
 if __name__ == '__main__':
     j = Solution()
-    a = j.intersection([1,2,2,1],[2,2])
+    a = j.intersection([1, 2, 2, 1], [2, 2])
     print(a)
-
-

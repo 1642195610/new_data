@@ -57,7 +57,7 @@ class Tree:
                 res.append(pop_node)
             elif pop_node.right and (pop_node.right.data == item):
                 res.append(pop_node)
-            if pop_node.left: # 如果当前结点有左结点,收集起来待遍历
+            if pop_node.left:  # 如果当前结点有左结点,收集起来待遍历
                 temp.append(pop_node.left)
             if pop_node.right:  # 如果当前结点有右节点,收集起来待遍历
                 temp.append(pop_node.right)

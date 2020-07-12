@@ -36,14 +36,6 @@
 #     print(j)
 
 
-
-
-
-
-
-
-
-
 # from typing import List
 #
 #
@@ -166,19 +158,6 @@
 #     print("删除尾部链表:  %s" % (j))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 # from typing import List
 #
 #
@@ -299,9 +278,3 @@
 #     print(j)
 #     print("删除元素为:  %s" % (j.pop()))
 #     print("删除尾部链表:  %s" % (j))
-
-
-
-
-
-

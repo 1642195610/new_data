@@ -22,9 +22,10 @@ class Solution:
         for i in range(len(nums)):
             t = target - nums[i]
             if t in dict:
-                return [dict[t],i]
+                return [dict[t], i]
             else:
                 dict[nums[i]] = i
+
 
 if __name__ == '__main__':
     j = Solution()

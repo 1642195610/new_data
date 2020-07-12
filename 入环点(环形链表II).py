@@ -6,7 +6,6 @@
 # 说明：不允许修改给定的链表。
 
 
-
 # 示例1：
 #
 # 输入：head = [3, 2, 0, -4], pos = 1
@@ -28,13 +27,12 @@
 # 解释：链表中没有环。
 
 class ListNode:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
         self.next = None
 
     def __repr__(self):
         return f"Node({self.data})"
-
 
 
 class Solution:

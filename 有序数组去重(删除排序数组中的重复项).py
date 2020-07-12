@@ -52,7 +52,7 @@ class Solution:
             if nums[fast] == nums[slow]:
                 fast += 1
             else:
-                slow +=1
+                slow += 1
                 nums[slow] = nums[fast]
                 fast += 1
         return slow + 1
@@ -60,7 +60,7 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    a = s.removeDuplicated([1,1,2])
+    a = s.removeDuplicated([1, 1, 2])
     print(a)
 # ————————————————
 # 版权声明：本文为CSDN博主「姜泽毓」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。

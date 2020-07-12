@@ -8,7 +8,7 @@ class Queue:
         printed = "<" + str(self.entries)[1:-1] + ">"
         return printed
 
-    def put(self,item):
+    def put(self, item):
         self.entries.append(item)
         self.length += 1
 
@@ -18,7 +18,7 @@ class Queue:
         self.entries = self.entries[1:]
         return dequeued
 
-    def rotate(self,rotation):
+    def rotate(self, rotation):
         for i in range(rotation):
             self.put(self.get())
 

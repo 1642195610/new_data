@@ -71,7 +71,7 @@
 #     print(j.moveZeroes([0,1,0,3,12]))
 
 
-#两数之和.1
+# 两数之和.1
 # from typing import List
 #
 #
@@ -88,7 +88,7 @@
 #     print(ff.twoSum([2, 7, 11, 15], 9))
 
 
-#两数之和.2
+# 两数之和.2
 # from typing import List
 #
 #
@@ -126,8 +126,8 @@
 #     print(j.twoSum([2, 7, 11, 15], 9))
 
 
-#两数之和.3
-#只适合有序
+# 两数之和.3
+# 只适合有序
 # from typing import List
 #
 #
@@ -156,7 +156,7 @@
 #     print(j.twoSum([2, 7, 11, 15], 9))
 
 
-#栈---stack
+# 栈---stack
 
 
 # class Stack:
@@ -193,7 +193,7 @@
 #     print(stack)
 
 
-#链表实现栈
+# 链表实现栈
 # from typing import Any, Optional, NoReturn
 #
 #
@@ -345,14 +345,14 @@
 #     print("栈为: %s"%j)
 
 
-#增加了栈的大小
-from typing import Any,Optional,NoReturn
+# 增加了栈的大小
+from typing import Any, Optional, NoReturn
 
 
 class Node:
-    def __init__(self,data: Any,next: Optional = None):
-        self.data : Any = data
-        self.next : Optional[Node] = next
+    def __init__(self, data: Any, next: Optional = None):
+        self.data: Any = data
+        self.next: Optional[Node] = next
 
     def __repr__(self):
         return f"Node({self.data})"
@@ -360,7 +360,7 @@ class Node:
 
 class LinkStack:
     def __init__(self):
-        self.top : Optional[Node] = None
+        self.top: Optional[Node] = None
         self.size = 0
 
     def __repr__(self):
@@ -371,8 +371,8 @@ class LinkStack:
             current = current.next
         return res + "END"
 
-    def push(self,item: Any) -> None:
-        node : Node = Node(item)
+    def push(self, item: Any) -> None:
+        node: Node = Node(item)
         if self.top is None:
             self.top = node
         else:
@@ -398,13 +398,9 @@ if __name__ == '__main__':
     j.push(3)
     j.push(2)
     j.push(1)
-    print("压栈为: %s"%j)
+    print("压栈为: %s" % j)
     print(j.size)
     j.pop()
-    print("弹栈为: %s"%j)
+    print("弹栈为: %s" % j)
     print(j.size)
     print(j.is_empty())
-
-
-
-

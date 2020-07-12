@@ -20,8 +20,8 @@ class Solution:
         maxlen = 1
         res = s[0]
         for i in range(length - 1):
-            odd = centers(s,i,i)
-            even = centers(s,i,i+1)
+            odd = centers(s, i, i)
+            even = centers(s, i, i + 1)
             maxstr = odd if len(odd) > len(even) else even
             if len(maxstr) > maxlen:
                 maxlen = len(maxstr)
@@ -29,17 +29,18 @@ class Solution:
         return res
 
 
-def centers(strs: str, left:int,right:int):
+def centers(strs: str, left: int, right: int):
     length = len(strs)
     i = left
     j = right
-    while i >=0 and j < length:
+    while i >= 0 and j < length:
         if strs[i] == strs[j]:
             i -= 1
             j += 1
         else:
             break
-    return strs[i+1:j]
+    return strs[i + 1:j]
+
 
 if __name__ == '__main__':
     j = Solution()

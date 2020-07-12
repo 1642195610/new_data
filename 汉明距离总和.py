@@ -35,8 +35,9 @@ class Solution:
             res = res + count_1 * count_0
         return res
 
+
 if __name__ == '__main__':
     s = Solution()
     a = s.totalHammingDistance(
-[4,14,2])
+        [4, 14, 2])
     print(a)

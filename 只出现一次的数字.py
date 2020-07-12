@@ -28,7 +28,5 @@ class Solution:
 
 if __name__ == '__main__':
     j = Solution()
-    a = j.singleNumber([4,1,2,1,2])
+    a = j.singleNumber([4, 1, 2, 1, 2])
     print(a)
-
-

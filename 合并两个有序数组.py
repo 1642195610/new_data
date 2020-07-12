@@ -2,7 +2,12 @@ from typing import List
 
 
 class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    def merge(
+            self,
+            nums1: List[int],
+            m: int,
+            nums2: List[int],
+            n: int) -> None:
         i = m - 1
         j = n - 1
         k = m + n - 1
@@ -27,5 +32,5 @@ class Solution:
 
 if __name__ == '__main__':
     j = Solution()
-    a = j.merge([1,2,3,0,0,0],3,[2,5,6],3)
+    a = j.merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3)
     print(a)

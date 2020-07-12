@@ -6,8 +6,6 @@ class Node:
         self.data: Any = data
         self.next: Optional = next
 
-
-
     def __repr__(self):
         return f"Node({self.data})"
 
@@ -40,14 +38,14 @@ class LinkQueue:
     def is_empty(self) -> bool:
         return self.front is None
 
-    def get(self,index) -> Any:
+    def get(self, index) -> Any:
         if index < 0 or index > self.size:
             raise Exception("索引越界!!!")
         current = self.front
         t = 0
         dic = {}
         while current:
-            dic ={t:current}
+            dic = {t: current}
             if t == index:
                 break
             t += 1
@@ -78,6 +76,3 @@ if __name__ == '__main__':
     print(q.get(2))
     print(q.get(1))
     print(q.size)
-
-
-    
