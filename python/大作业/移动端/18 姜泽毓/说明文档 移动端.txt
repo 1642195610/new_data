@@ -1,0 +1,19 @@
+说明文档:
+数据源说明文档(写好每个字段什么意思) (爬的网站,字段介绍,数据量)
+1.所爬网站:
+"https://render-web.shuqireader.com/render/sq-bookstore/page/k94b7ann/?appfunction=an_bmk,1_clo,1_smjs,1&soft_id=1&ver=200422&subVer=sqrelease&appVer=11.1.1.109&platform=an&placeid=1075&imei=860204041846236&oaid=72407613d9d7db24&sdk=28&wh=1080x2135&msv=3&enc=023361587608482712&sn=1587608069965182&vc=eef7&mod=Mi9+Pro+5G&manufacturer=Xiaomi&brand=Xiaomi&net_type=wifi&first_placeid=src1075&aak=158d5e&user_id=1719605275&utype=pre_vip&net=4&net_env=4&coreType=1&rom=9&skinId=999&skinVersion=1.0&skinVersionPrefix=1&imagetype=1&utdid=WElPaG04aHgzbG9EQUJlQmNVZ0JLTVlG&umidtoken=a8tLPAJLOtHzxjVxpHrYct+p0NA1K5qX&permissionType=3&writer_switch=1&serviceWorkerOn=1&spm=a2oun.page_render_sq_bookstore_k94b2r2m.WxBookListN_13_1.module HTTP/1.1"
+2.字段介绍:
+{
+                    "字数": zishu,
+                    "分类": fenlei,
+                    "书名": shuming,
+                    "书号": shuhao,
+                    "封面图片地址": surl,
+                    "作者": zz,
+                    "标签": biaoqian,
+                    "开始时间": kaishi,
+                    "结束时间": jieshu,
+                    "描述": miaoshu
+                }
+3.总计所爬数据量:
+1000条

@@ -1,0 +1,357 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Cache-Control" content="no-siteapp"><meta http-equiv="Cache-Control" content="no-transform "><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	我的收藏_古诗文网
+</title>
+<style type="text/css">
+.mainshoucang{width:705px; height:34px; line-height:34px; border-bottom:1px solid #C8C7BC;overflow:hidden; float:left; clear:left;}
+.mainshoucang span{float:right; margin-top:15px; margin-left:5px; color:#65645F;}
+.mainshoucang a{float:right; margin-top:15px; margin-left:5px;}
+</style>
+<script src="//hm.baidu.com/hm.js?04660099568f561a75456483228a9516"></script><script type="text/javascript">
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+        window.location.href = "https://m.gushiwen.org/user/collect.aspx?type=s&p=1&id=890879&sort=t";
+    } else {
+
+    }
+</script>
+<link href="/css/skinSo20191017.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+    //取得cookie值
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+        if (arr = document.cookie.match(reg))
+
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+
+    //判断收藏
+    function selectLike(id) {
+        document.getElementById('likeImg' + id).name = parseInt(document.getElementById('likeImg' + id).name) + 1;
+        if (document.getElementById('likeImg' + id).name == '1') {
+            var idsShigeLaiyo = getCookie('idsShiwen2017');
+            if (idsShigeLaiyo != null && idsShigeLaiyo != '') {
+                var ids = idsShigeLaiyo.split(',');
+                for (var i = 0; i < ids.length; i++) {
+                    if (ids[i] == id) {
+                        document.getElementById('likeImg' + id).src = 'https://song.gushiwen.org/siteimg/shoucangok.png';
+                        document.getElementById('likeImg' + id).alt = '已收藏';
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    //判断收藏名句
+    function selectLikeMingju(id) {
+        document.getElementById('likeImg' + id).name = parseInt(document.getElementById('likeImg' + id).name) + 1;
+        if (document.getElementById('likeImg' + id).name == '1') {
+            var idsShigeLaiyo = getCookie('idsMingju2017');
+            if (idsShigeLaiyo != null && idsShigeLaiyo != '') {
+                var ids = idsShigeLaiyo.split(',');
+                for (var i = 0; i < ids.length; i++) {
+                    if (ids[i] == id) {
+                        document.getElementById('likeImg' + id).src = 'https://song.gushiwen.org/siteimg/shoucangok.png';
+                        document.getElementById('likeImg' + id).alt = '已收藏';
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    //判断收藏作者
+    function selectLikeAuthor(id) {
+        document.getElementById('likeImg' + id).name = parseInt(document.getElementById('likeImg' + id).name) + 1;
+        if (document.getElementById('likeImg' + id).name == '1') {
+            var idsShigeLaiyo = getCookie('idsAuthor2017');
+            if (idsShigeLaiyo != null && idsShigeLaiyo != '') {
+                var ids = idsShigeLaiyo.split(',');
+                for (var i = 0; i < ids.length; i++) {
+                    if (ids[i] == id) {
+                        document.getElementById('likeImg' + id).src = 'https://song.gushiwen.org/siteimg/shoucangok.png';
+                        document.getElementById('likeImg' + id).alt = '已收藏';
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    //判断收藏古籍
+    function selectLikeGuwen(id) {
+        document.getElementById('likeImg' + id).name = parseInt(document.getElementById('likeImg' + id).name) + 1;
+        if (document.getElementById('likeImg' + id).name == '1') {
+            var idsShigeLaiyo = getCookie('idsGuji2017');
+            if (idsShigeLaiyo != null && idsShigeLaiyo != '') {
+                var ids = idsShigeLaiyo.split(',');
+                for (var i = 0; i < ids.length; i++) {
+                    if (ids[i] == id) {
+                        document.getElementById('likeImg' + id).src = 'https://song.gushiwen.org/siteimg/shoucangok.png';
+                        document.getElementById('likeImg' + id).alt = '已收藏';
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    </script>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?04660099568f561a75456483228a9516";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://song.gushiwen.cn/huaci/graybox.css"><link rel="stylesheet" type="text/css" href="https://song.gushiwen.cn/huaci/blackdownbar.css"></head>
+<body onclick="closeshowBos()">
+<div class="main1">
+    <div class="cont">
+        <div class="left">
+            <a href="https://www.gushiwen.org/">古诗文网</a>
+        </div>
+        <div class="right">
+            <div class="son1">
+                <a style="margin-left:1px;" href="https://www.gushiwen.org/">推荐</a>
+                   
+                  <a href="/shiwen/">诗文</a>
+                   
+                  <a href="/mingju/">名句</a>
+                   
+                  <a href="/authors/">作者</a>
+                   
+                  <a href="/guwen/">古籍</a>
+                  
+                  <a href="/user/collect.aspx" rel="nofollow" style="background-color:#757863;border-bottom:3px solid #F0EFE2;line-height:43px; height:43px;">我的</a>
+                  
+                <a style="width:65px;" href="/app/" target="_blank">手机版</a>
+            </div>
+            <div class="son2">
+                <div class="search">
+                <form action="/search.aspx" onsubmit="return selectSearch()" contenttype="text/html; charset=utf-8">
+                    <input onkeydown="noajaxkeyUp()" onfocus="setInterval('showBos()',1000)" id="txtKey" name="value" type="text" value="" maxlength="40" autocomplete="off" style="height:25px; line-height:25px; float:left; padding-left:5px; width:264px; font-size:14px; clear:left; border:0px;">
+                    <input type="submit" style="float:right; width:20px; height:20px; clear:right; margin-top:4px; margin-right:3px; background-image:url(https://song.gushiwen.org/siteimg/docSearch.png); background-repeat:no-repeat; background-size:20px 20px; border:0px;cursor:pointer;" value="">
+                    <input id="b" style="display:none;" type="text">
+                </form>
+                </div>
+                <div id="box"></div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<div style="width:1000px; clear:both; margin-left:auto; margin-right:auto; margin-top:20px; overflow:hidden;">
+<div class="mainshoucang">
+<span style=" height:34px; line-height:34px;font-size:18px; font-weight:bold; float:left; margin:0px; color:#0F0F0F;">我的收藏</span>
+<span style=" height:34px; line-height:34px;font-size:18px; font-weight:bold; float:left; margin:0px; color:#0F0F0F; margin-left:10px; margin-right:10px;">/</span>
+<a style=" height:34px; line-height:34px;font-size:18px; font-weight:bold; float:left; margin:0px;" href="/user/collectbei.aspx?sort=t">我的背诵</a>
+ 
+    <a href="/user/collect.aspx?type=s&amp;id=890879&amp;sort=z">字母排序</a>
+    <span>/</span>
+    <span>时间排序</span>
+  
+</div>
+<div style="width:250px;height:34px; line-height:34px; border-bottom:1px solid #C5C5C5;overflow:hidden; clear:right; float:right;font-size:14px;">
+账号管理
+</div>
+</div>
+<div id="mainSearch" class="mainSearch">
+<div class="searchleft">
+    
+        <a style="color:#FFFFFF;background-image:url(https://song.gushiwen.org/siteimg/seachimg.jpg); background-repeat:no-repeat;">诗文</a>
+        <a href="/user/collect.aspx?type=m&amp;id=890879&amp;sort=t">名句</a>
+        <a href="/user/collect.aspx?type=a&amp;id=890879&amp;sort=t">作者</a>
+        <a href="/user/collect.aspx?type=d&amp;id=890879&amp;sort=t">古籍</a>
+       
+
+    </div>
+<div class="left">
+    
+        <div style=" width:1px; height:1px; overflow:hidden;">
+<textarea style=" background-color:#F0EFE2; border:0px;overflow:hidden;" cols="1" rows="1" id="txtare9711">都护新灭胡，士马气亦粗。萧条虏尘净，突兀天山孤。——唐代·岑参《灭胡曲》https://so.gushiwen.org/shiwenv_b9c2ea8e95f2.aspx</textarea>
+</div>
+          <div class="sons">
+          <div class="cont">
+               <div class="yizhu">
+               <img src="https://song.gushiwen.org/siteimg/beipic.png" width="25" height="25" alt="背诵" onclick="OnBeisong('b9c2ea8e95f2','http://so.gushiwen.org/user/collect.aspx')" id="btnBeisongb9c2ea8e95f2">
+                                   <img style="display: block;" src="https://song.gushiwen.org/siteimg/shangpic.png" width="25" height="25" alt="赏析" onclick="OnShangxi('b9c2ea8e95f2')" id="btnShangxib9c2ea8e95f2">
+                    <img style="display: block;" src="https://song.gushiwen.org/siteimg/zhupic.png" width="25" height="25" alt="注释" onclick="OnZhushi('b9c2ea8e95f2')" id="btnZhushib9c2ea8e95f2">
+                    <img style="display: block;" src="https://song.gushiwen.org/siteimg/yipic.png" width="25" height="25" alt="译文" onclick="OnYiwen('b9c2ea8e95f2')" id="btnYiwenb9c2ea8e95f2">
+                 
+                    <script type="text/javascript">
+                        document.getElementById("btnShangxib9c2ea8e95f2").style.display = "block";
+                    </script>
+                
+                    <script type="text/javascript">
+                        document.getElementById("btnZhushib9c2ea8e95f2").style.display = "block";
+                    </script>
+                
+                    <script type="text/javascript">
+                        document.getElementById("btnYiwenb9c2ea8e95f2").style.display = "block";
+                    </script>
+                
+               </div>
+               <p><a style="font-size:18px; line-height:22px; height:22px;" href="https://so.gushiwen.org/shiwenv_b9c2ea8e95f2.aspx" target="_blank"><b>灭胡曲</b></a></p>
+               <p class="source"><a href="https://so.gushiwen.org/shiwen/default.aspx?cstr=%e5%94%90%e4%bb%a3">唐代</a><span>：</span><a href="https://so.gushiwen.org/search.aspx?value=%e5%b2%91%e5%8f%82">岑参</a></p>
+                <div class="contson" id="contsonb9c2ea8e95f2">
+                    都护新灭胡，士马气亦粗。<br>萧条虏尘净，突兀天山孤。 
+                </div>
+          </div>
+          <div class="tool">
+            <div class="shoucang"><img id="likeImg9711" name="2" onload="selectLike(9711)" onclick="changeLike(9711,'F8FB541C4D28284F','http://so.gushiwen.org/user/collect.aspx')" src="https://song.gushiwen.org/siteimg/shoucangok.png" alt="已收藏" width="20" height="20"></div>
+            <div class="toolpinglun"><a href="https://so.gushiwen.org/app/"><img src="https://song.gushiwen.org/siteimg/download.png" alt="下载" width="20" height="20"></a></div>
+            <div class="toolpinglun"><a href="javascript:copy(9711)"><img src="https://song.gushiwen.org/siteimg/copy.png" alt="复制" width="20" height="20"></a></div>
+            
+            <div class="toolpinglun"><a href="https://so.gushiwen.org/shiwenv_b9c2ea8e95f2.aspx" target="_blank"><img src="https://song.gushiwen.org/siteimg/toolmore.png" alt="详情" width="20" height="20"></a></div>
+            <div class="jiucuo"><a href="/jiucuo.aspx?u=%e8%af%97%e6%96%87b9c2ea8e95f2%e3%80%8a%e7%81%ad%e8%83%a1%e6%9b%b2%e3%80%8b" target="_blank">完善</a></div>
+            </div>
+            <div id="toolPlay9711" style=" display:none;clear:both;"></div>
+        <div class="tag"><span>收藏于：2020年04月20日 19:46:16</span></div>
+        </div>
+          
+        <div style=" width:1px; height:1px; overflow:hidden;">
+<textarea style=" background-color:#F0EFE2; border:0px;overflow:hidden;" cols="1" rows="1" id="txtare72888">试望阴山，黯然销魂，无言徘徊。见青峰几簇，去天才尺；黄沙一片，匝地无埃。碎叶城荒，拂云堆远，雕外寒烟惨不开。踟蹰久，忽砯崖转石，万壑惊雷。穷边自足秋怀。又何必、平生多恨哉。只凄凉绝塞，峨眉遗冢；梢沉腐草，骏骨空台。北转河流，南横斗柄，略点微霜鬓早衰。君不信，向西风回首，百事堪哀。——清代·纳兰性德《沁园春·试望阴山》https://so.gushiwen.org/shiwenv_949797b81243.aspx</textarea>
+</div>
+          <div class="sons">
+          <div class="cont">
+               <div class="yizhu">
+               <img src="https://song.gushiwen.org/siteimg/beipic.png" width="25" height="25" alt="背诵" onclick="OnBeisong('949797b81243','http://so.gushiwen.org/user/collect.aspx')" id="btnBeisong949797b81243">
+                                   <img style="display: block;" src="https://song.gushiwen.org/siteimg/shangpic.png" width="25" height="25" alt="赏析" onclick="OnShangxi('949797b81243')" id="btnShangxi949797b81243">
+                    <img style="display: block;" src="https://song.gushiwen.org/siteimg/zhupic.png" width="25" height="25" alt="注释" onclick="OnZhushi('949797b81243')" id="btnZhushi949797b81243">
+                    <img style="display: block;" src="https://song.gushiwen.org/siteimg/yipic.png" width="25" height="25" alt="译文" onclick="OnYiwen('949797b81243')" id="btnYiwen949797b81243">
+                 
+                    <script type="text/javascript">
+                        document.getElementById("btnShangxi949797b81243").style.display = "block";
+                    </script>
+                
+                    <script type="text/javascript">
+                        document.getElementById("btnZhushi949797b81243").style.display = "block";
+                    </script>
+                
+                    <script type="text/javascript">
+                        document.getElementById("btnYiwen949797b81243").style.display = "block";
+                    </script>
+                
+               </div>
+               <p><a style="font-size:18px; line-height:22px; height:22px;" href="https://so.gushiwen.org/shiwenv_949797b81243.aspx" target="_blank"><b>沁园春·试望阴山</b></a></p>
+               <p class="source"><a href="https://so.gushiwen.org/shiwen/default.aspx?cstr=%e6%b8%85%e4%bb%a3">清代</a><span>：</span><a href="https://so.gushiwen.org/search.aspx?value=%e7%ba%b3%e5%85%b0%e6%80%a7%e5%be%b7">纳兰性德</a></p>
+                <div class="contson" id="contson949797b81243">
+                    试望阴山，黯然销魂，无言徘徊。见青峰几簇，去天才尺；黄沙一片，匝地无埃。碎叶城荒，拂云堆远，雕外寒烟惨不开。踟蹰久，忽砯崖转石，万壑惊雷。<br>穷边自足秋怀。又何必、平生多恨哉。只凄凉绝塞，峨眉遗冢；梢沉腐草，骏骨空台。北转河流，南横斗柄，略点微霜鬓早衰。君不信，向西风回首，百事堪哀。 
+                </div>
+          </div>
+          <div class="tool">
+            <div class="shoucang"><img id="likeImg72888" name="2" onload="selectLike(72888)" onclick="changeLike(72888,'3CEE7ACDD6DE3813','http://so.gushiwen.org/user/collect.aspx')" src="https://song.gushiwen.org/siteimg/shoucangok.png" alt="已收藏" width="20" height="20"></div>
+            <div class="toolpinglun"><a href="https://so.gushiwen.org/app/"><img src="https://song.gushiwen.org/siteimg/download.png" alt="下载" width="20" height="20"></a></div>
+            <div class="toolpinglun"><a href="javascript:copy(72888)"><img src="https://song.gushiwen.org/siteimg/copy.png" alt="复制" width="20" height="20"></a></div>
+            
+            <div class="toolpinglun"><a href="https://so.gushiwen.org/shiwenv_949797b81243.aspx" target="_blank"><img src="https://song.gushiwen.org/siteimg/toolmore.png" alt="详情" width="20" height="20"></a></div>
+            <div class="jiucuo"><a href="/jiucuo.aspx?u=%e8%af%97%e6%96%87949797b81243%e3%80%8a%e6%b2%81%e5%9b%ad%e6%98%a5%c2%b7%e8%af%95%e6%9c%9b%e9%98%b4%e5%b1%b1%e3%80%8b" target="_blank">完善</a></div>
+            </div>
+            <div id="toolPlay72888" style=" display:none;clear:both;"></div>
+        <div class="tag"><span>收藏于：2020年04月20日 19:46:13</span></div>
+        </div>
+          
+        <div style=" width:1px; height:1px; overflow:hidden;">
+<textarea style=" background-color:#F0EFE2; border:0px;overflow:hidden;" cols="1" rows="1" id="txtare75311">岂是从容唱渭城，个中当有不平鸣。可怜日晏忍饥面，强作春深求友声。——宋代·范成大《咏河市歌者》https://so.gushiwen.org/shiwenv_f6c873f67bcc.aspx</textarea>
+</div>
+          <div class="sons">
+          <div class="cont">
+               <div class="yizhu">
+               <img src="https://song.gushiwen.org/siteimg/beipic.png" width="25" height="25" alt="背诵" onclick="OnBeisong('f6c873f67bcc','http://so.gushiwen.org/user/collect.aspx')" id="btnBeisongf6c873f67bcc">
+                                   <img style="display: block;" src="https://song.gushiwen.org/siteimg/shangpic.png" width="25" height="25" alt="赏析" onclick="OnShangxi('f6c873f67bcc')" id="btnShangxif6c873f67bcc">
+                    <img style="display: block;" src="https://song.gushiwen.org/siteimg/zhupic.png" width="25" height="25" alt="注释" onclick="OnZhushi('f6c873f67bcc')" id="btnZhushif6c873f67bcc">
+                    <img style="display: block;" src="https://song.gushiwen.org/siteimg/yipic.png" width="25" height="25" alt="译文" onclick="OnYiwen('f6c873f67bcc')" id="btnYiwenf6c873f67bcc">
+                 
+                    <script type="text/javascript">
+                        document.getElementById("btnShangxif6c873f67bcc").style.display = "block";
+                    </script>
+                
+                    <script type="text/javascript">
+                        document.getElementById("btnZhushif6c873f67bcc").style.display = "block";
+                    </script>
+                
+                    <script type="text/javascript">
+                        document.getElementById("btnYiwenf6c873f67bcc").style.display = "block";
+                    </script>
+                
+               </div>
+               <p><a style="font-size:18px; line-height:22px; height:22px;" href="https://so.gushiwen.org/shiwenv_f6c873f67bcc.aspx" target="_blank"><b>咏河市歌者</b></a></p>
+               <p class="source"><a href="https://so.gushiwen.org/shiwen/default.aspx?cstr=%e5%ae%8b%e4%bb%a3">宋代</a><span>：</span><a href="https://so.gushiwen.org/search.aspx?value=%e8%8c%83%e6%88%90%e5%a4%a7">范成大</a></p>
+                <div class="contson" id="contsonf6c873f67bcc">
+                    岂是从容唱渭城，个中当有不平鸣。<br>可怜日晏忍饥面，强作春深求友声。 
+                </div>
+          </div>
+          <div class="tool">
+            <div class="shoucang"><img id="likeImg75311" name="2" onload="selectLike(75311)" onclick="changeLike(75311,'AC0D55C2AEB94AD5','http://so.gushiwen.org/user/collect.aspx')" src="https://song.gushiwen.org/siteimg/shoucangok.png" alt="已收藏" width="20" height="20"></div>
+            <div class="toolpinglun"><a href="https://so.gushiwen.org/app/"><img src="https://song.gushiwen.org/siteimg/download.png" alt="下载" width="20" height="20"></a></div>
+            <div class="toolpinglun"><a href="javascript:copy(75311)"><img src="https://song.gushiwen.org/siteimg/copy.png" alt="复制" width="20" height="20"></a></div>
+            
+            <div class="toolpinglun"><a href="https://so.gushiwen.org/shiwenv_f6c873f67bcc.aspx" target="_blank"><img src="https://song.gushiwen.org/siteimg/toolmore.png" alt="详情" width="20" height="20"></a></div>
+            <div class="jiucuo"><a href="/jiucuo.aspx?u=%e8%af%97%e6%96%87f6c873f67bcc%e3%80%8a%e5%92%8f%e6%b2%b3%e5%b8%82%e6%ad%8c%e8%80%85%e3%80%8b" target="_blank">完善</a></div>
+            </div>
+            <div id="toolPlay75311" style=" display:none;clear:both;"></div>
+        <div class="tag"><span>收藏于：2020年04月20日 19:46:10</span></div>
+        </div>
+           
+
+        <form id="FromPage" method="get" action="/user/collect.aspx" onsubmit="return PageSubmit()">
+            <div class="pagesright">
+             
+              <a class="amore" style=" color:#808080;background-color:#e7e6d8;width:380px;">下一页</a>
+               
+                                  <a style=" color:#808080;background-color:#e7e6d8;">上一页</a>
+                                  
+                      <span style=" background-color:#E1E0C7; border:0px; margin-top:22px; width:auto;">/ 1页</span>
+                      <span class="curent"><input id="putpage" name="p" value="1" autocomplete="off" onblur="SubPage()"></span>
+                      <label id="temppage" style="display:none;">1</label>
+                      <label id="sumPage" style="display:none;">1</label>
+                      <input type="hidden" name="sort" value="t">
+                      <input type="hidden" name="id" value="890879">
+         </div>
+         </form>
+
+</div>
+
+<div class="right">
+<div class="shisoncont">
+<div class="line"><a href="/user/modifynick.aspx?from=http://so.gushiwen.org/user/collect.aspx">修改昵称</a></div>
+<div class="line"><a href="/user/modifypwd.aspx?from=http://so.gushiwen.org/user/collect.aspx">修改密码</a></div>
+ 
+  <div class="line"><a href="/user/bandemail.aspx?from=http://so.gushiwen.org/user/collect.aspx">绑定邮箱</a></div>
+   
+    <div class="line"><a href="/user/bandphone.aspx?from=http://so.gushiwen.org/user/collect.aspx">绑定手机号</a><span>*****316206</span></div>
+    
+<div class="line" style=" border-bottom:0px;"><a href="/user/loginlose.aspx?from=http://so.gushiwen.org/user/collect.aspx">退出登录</a></div>
+<div class="line" style=" border-bottom:0px;"><a href="/user/userDel.aspx">删除账号</a></div>
+</div>
+
+<div class="juzioncont">
+    <img style=" float:left; margin:10px; margin-right:0px;" src="/app/appweixin.png" width="80" height="80" alt=""><p></p><center style="font-size:18px; margin-top:14px;">扫码关注</center><p></p><p></p><center style="font-size:18px;margin-top:5px;">微信服务号</center><p></p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="main4">
+    © 2020 <a href="https://www.gushiwen.org/">古诗文网</a> | <a href="https://so.gushiwen.cn/shiwen/">诗文</a> | <a href="https://so.gushiwen.cn/mingju/">名句</a> | <a href="https://so.gushiwen.cn/authors/">作者</a> | <a href="https://so.gushiwen.cn/guwen/">古籍</a> | <a href="/jiucuo.aspx?u=" target="_blank" rel="nofollow">纠错</a>
+</div>
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        setIframeHeight(document.getElementById('external-frame'));
+    };
+        </script>
+
+<script defer="defer" src="/js/skinso20191025.js" type="text/javascript"></script>
+
+
+<div class="aihuaci"><div class="aihuaciheader"><p></p><button id="aihuacihead">&nbsp;</button><span></span><button id="aihuaciclose"></button></div><div class="aihuacimain"><div class="aihuacimainloadbox"><img src="https://song.gushiwen.org/siteimg/loading.gif" width="32" height="32"></div><iframe frameborder="0" id="aihuaciiframe" name="aihuaciiframe"></iframe><iframe frameborder="0" id="aihuaciadvert" name="aihuaciadvert" style="height: 0px; width: 100%;"></iframe></div><div class="aihuacibottom"><p></p><div><button id="aihuacibottombtn"></button></div><a href="//www.gushiwen.org/" target="_blank">古诗文网</a><span></span></div><button class="aihuacisidebar" style="width: 5px; height: 100%; top: 0px; left: -2px; background: black; cursor: col-resize;"></button><button class="aihuacisidebar" style="width: 100%; height: 5px; top: -2px; left: 0px; background: black; cursor: row-resize;"></button><button class="aihuacisidebar" style="width: 5px; height: 100%; top: 0px; right: -2px; background: black; cursor: col-resize;"></button><button class="aihuacisidebar" style="width: 100%; height: 5px; left: 0px; bottom: -2px; background: black; cursor: row-resize;"></button><button class="aihuacisidepart" style="top: -2px; left: -2px; cursor: nw-resize;"></button><button class="aihuacisidepart" style="top: -2px; right: -2px; cursor: ne-resize;"></button><button class="aihuacisidepart" style="left: -2px; bottom: -2px; cursor: sw-resize;"></button><button class="aihuacisidepart" style="right: -2px; bottom: -2px; cursor: se-resize;"></button></div><div class="blankmask" style="display: none;"></div><form target="aihuaciiframe" method="post" action="/dict/fancha.aspx" accept-charset="utf-8" class="aihuacitollbar" style="width: 40px;"><input type="hidden" id="aihuacikeyword" name="z"><input type="hidden" name="url" value="so.gushiwen.org/user/collect.aspx"><ul><li toolid="10" params="320,330,&amp;#35789;&amp;#20856;" style="background-position: 0px 0px;"><img src="" title="词典"><button type="button">词典</button></li></ul><span></span></form></body></html>
