@@ -22,40 +22,40 @@
 # 解释：链表中没有环。
 
 
-class ListNode:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-    def __repr__(self):
-        return f"Node({self.data})"
-
-
-class Solution:
-    def detectCycle(self, head: ListNode) -> ListNode:
-        curr = head
-        prev = head
-        while curr and curr.next is not None:
-            prev = prev.next
-            curr = curr.next.next
-            if prev == curr:
-                curr = head
-                while curr != prev:
-                    curr = curr.next
-                    prev = prev.next
-                return curr
-        return None
-
-
-if __name__ == '__main__':
-    s = Solution()
-    j1 = ListNode(1)
-    j2 = ListNode(2)
-    j3 = ListNode(3)
-    j1.next = j2
-    j2.next = j3
-    j3.next = j1
-    print(s.detectCycle(j1))
+# class ListNode:
+#     def __init__(self, data):
+#         self.data = data
+#         self.next = None
+#
+#     def __repr__(self):
+#         return f"Node({self.data})"
+#
+#
+# class Solution:
+#     def detectCycle(self, head: ListNode) -> ListNode:
+#         curr = head
+#         prev = head
+#         while curr and curr.next is not None:
+#             prev = prev.next
+#             curr = curr.next.next
+#             if prev == curr:
+#                 curr = head
+#                 while curr != prev:
+#                     curr = curr.next
+#                     prev = prev.next
+#                 return curr
+#         return None
+#
+#
+# if __name__ == '__main__':
+#     s = Solution()
+#     j1 = ListNode(1)
+#     j2 = ListNode(2)
+#     j3 = ListNode(3)
+#     j1.next = j2
+#     j2.next = j3
+#     j3.next = j1
+#     print(s.detectCycle(j1))
 
 
 # class Node:
@@ -74,6 +74,8 @@ if __name__ == '__main__':
 #     return  False
 #
 #
+
+
 # if __name__ == '__main__':
 #     j1 = Node(1)
 #     j2 = Node(2)
@@ -89,3 +91,45 @@ if __name__ == '__main__':
 
 # 注意:
 # 1.判断函数(pan()是和class同级别)
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+# class LinkList: #第一种
+#     def huan(self, head):
+#         if head is None or head.next is None:
+#             return False
+#         slow = head
+#         fast = head.next
+#         while fast and fast.next:
+#             if slow == fast:
+#                 return True
+#             slow = slow.next
+#             fast = fast.next.next
+#         return False
+
+class LinkList:  # 第二种
+    def huan(self, head):
+        fast = slow = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+
+n1 = Node(1)
+n2 = Node(2)
+n3 = Node(3)
+n4 = Node(4)
+n1.next = n2
+n2.next = n3
+n3.next = n4
+n4.next = n1
+ll = LinkList()
+print(f"链表是否有环: {ll.huan(n1)}")

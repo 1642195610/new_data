@@ -35,20 +35,36 @@ class ListNode:
         return f"Node({self.data})"
 
 
+# class Solution:
+#     def detectCycle(self, head: ListNode):
+#         fast = head
+#         slow = head
+#         while fast and fast.next:
+#             fast = fast.next.next
+#             slow = slow.next
+#             if fast == slow:
+#                 slow = head
+#                 while slow != fast:
+#                     slow = slow.next
+#                     fast = fast.next
+#                 return slow
+#         return None
+
+
 class Solution:
-    def detectCycle(self, head: ListNode) -> ListNode:
-        fast = head
-        slow = head
+    def detectCycle(self, head: ListNode):
+        fast = slow = head
+        f = 0
         while fast and fast.next:
-            fast = fast.next.next
-            slow = slow.next
+            fast, slow = fast.next.next, slow.next
             if fast == slow:
-                slow = head
-                while slow != fast:
-                    slow = slow.next
-                    fast = fast.next
-                return slow
-        return None
+                f = 1
+                break
+        if f:
+            slow = head
+            while slow != fast:
+                slow, fast = slow.next, fast.next
+            return slow
 
 
 if __name__ == '__main__':
@@ -58,5 +74,5 @@ if __name__ == '__main__':
     j3 = ListNode(3)
     j1.next = j2
     j2.next = j3
-    j3.next = j1
+    # j3.next = j1
     print(s.detectCycle(j1))

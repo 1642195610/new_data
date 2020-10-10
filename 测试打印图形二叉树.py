@@ -1,6 +1,12 @@
+"""
+Author:     Mr.Jiang
+Github:     https://github.com/1642195610
+CSDN  :     https://blog.csdn.net/qq_43722162
+"""
+
+import math
 from collections import namedtuple
 from io import StringIO
-import math
 
 # define the node structure
 Node = namedtuple('Node', ['data', 'left', 'right'])
