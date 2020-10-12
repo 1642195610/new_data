@@ -119,4 +119,4 @@ class Stack:
             temp = self.stack.pop()
             self.size -= 1
         return temp
-    
+
