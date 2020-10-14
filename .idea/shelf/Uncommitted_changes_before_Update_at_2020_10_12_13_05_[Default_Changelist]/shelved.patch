@@ -1,0 +1,277 @@
+Index: data_zgd/pycharm/10.12/Queue.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Node:\r\n    def __init__(self, data):\r\n        self.queue = []\r\n        self.size = 0\r\n\r\n    def __repr__(self):\r\n        printed = \"<\" + str(self.queue)[1:-1] + \">\"\r\n        return printed\r\n\r\n    def put(self, data):\r\n        self.queue.append(data)\r\n        self.size += 1\r\n\r\n    def pop(self):\r\n        if self.size == 0:\r\n            raise IndexError(\"队列为空,无法出队列\")\r\n        else:\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- data_zgd/pycharm/10.12/Queue.py	(revision 6a8b7af096866f8263e86a218298e3390d52a632)
++++ data_zgd/pycharm/10.12/Queue.py	(date 1602478067073)
+@@ -1,18 +1,42 @@
+-class Node:
+-    def __init__(self, data):
+-        self.queue = []
++class Queue:
++    def __init__(self):
++        self.entries = []
+         self.size = 0
+ 
+     def __repr__(self):
+-        printed = "<" + str(self.queue)[1:-1] + ">"
+-        return printed
++        return "<" + str(self.entries)[1:-1] + ">"
+ 
+-    def put(self, data):
+-        self.queue.append(data)
++    def enqueue(self, data):
++        self.entries.append(data)
+         self.size += 1
+ 
+-    def pop(self):
+-        if self.size == 0:
+-            raise IndexError("队列为空,无法出队列")
+-        else:
++    def dequeue(self):
++        temp = self.entries[0]
++        self.entries = self.entries[1:]
++        self.size -= 1
++        return temp
++
++    def size(self):
++        return self.size
++
++    def get(self, index):
++        return self.entries[index]
++
++    def reverse(self):
++        self.entries = self.entries[::-1]
+ 
++
++if __name__ == '__main__':
++    queue = Queue()
++    queue.enqueue(1)
++    queue.enqueue(2)
++    queue.enqueue(3)
++    queue.enqueue(4)
++    print(f"队列: {queue}")
++    print(f"删除的队列元素: {queue.dequeue()}")
++    print(f"删除后的队列: {queue}")
++    print(f"队列的大小: {queue.size}")
++    index = 1
++    print(f"查找的队列元素位置: {index}\n查找的队列元素为: {queue.get(index)}")
++    queue.reverse()
++    print(f"倒序后的队列: {queue}")
+\ No newline at end of file
+Index: .idea/deployment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/deployment.xml	(date 1602478567322)
++++ .idea/deployment.xml	(date 1602478567322)
+@@ -0,0 +1,15 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="PublishConfigData" serverName="github" uploadOnCheckin="45f2b119-520f-4466-9a30-f6cedf4a27c8">
++    <serverData>
++      <paths name="github">
++        <serverdata>
++          <mappings>
++            <mapping deploy="\" local="$PROJECT_DIR$" web="https://github.com/1642195610/new_data" />
++          </mappings>
++        </serverdata>
++      </paths>
++    </serverData>
++    <option name="myUploadOnCheckinName" value="github" />
++  </component>
++</project>
+\ No newline at end of file
+Index: python/venv/Lib/site-packages/pip-19.0.3-py3.6.egg/pip/_vendor/distlib/_backport/sysconfig.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># -*- coding: utf-8 -*-\r\n#\r\n# Copyright (C) 2012 The Python Software Foundation.\r\n# See LICENSE.txt and CONTRIBUTORS.txt.\r\n#\r\n\"\"\"Access to Python's configuration information.\"\"\"\r\n\r\nimport codecs\r\nimport os\r\nimport re\r\nimport sys\r\nfrom os.path import pardir, realpath\r\ntry:\r\n    import configparser\r\nexcept ImportError:\r\n    import ConfigParser as configparser\r\n\r\n\r\n__all__ = [\r\n    'get_config_h_filename',\r\n    'get_config_var',\r\n    'get_config_vars',\r\n    'get_makefile_filename',\r\n    'get_path',\r\n    'get_path_names',\r\n    'get_paths',\r\n    'get_platform',\r\n    'get_python_version',\r\n    'get_scheme_names',\r\n    'parse_config_h',\r\n]\r\n\r\n\r\ndef _safe_realpath(path):\r\n    try:\r\n        return realpath(path)\r\n    except OSError:\r\n        return path\r\n\r\n\r\nif sys.executable:\r\n    _PROJECT_BASE = os.path.dirname(_safe_realpath(sys.executable))\r\nelse:\r\n    # sys.executable can be empty if argv[0] has been changed and Python is\r\n    # unable to retrieve the real program name\r\n    _PROJECT_BASE = _safe_realpath(os.getcwd())\r\n\r\nif os.name == \"nt\" and \"pcbuild\" in _PROJECT_BASE[-8:].lower():\r\n    _PROJECT_BASE = _safe_realpath(os.path.join(_PROJECT_BASE, pardir))\r\n# PC/VS7.1\r\nif os.name == \"nt\" and \"\\\\pc\\\\v\" in _PROJECT_BASE[-10:].lower():\r\n    _PROJECT_BASE = _safe_realpath(os.path.join(_PROJECT_BASE, pardir, pardir))\r\n# PC/AMD64\r\nif os.name == \"nt\" and \"\\\\pcbuild\\\\amd64\" in _PROJECT_BASE[-14:].lower():\r\n    _PROJECT_BASE = _safe_realpath(os.path.join(_PROJECT_BASE, pardir, pardir))\r\n\r\n\r\ndef is_python_build():\r\n    for fn in (\"Setup.dist\", \"Setup.local\"):\r\n        if os.path.isfile(os.path.join(_PROJECT_BASE, \"Modules\", fn)):\r\n            return True\r\n    return False\r\n\r\n_PYTHON_BUILD = is_python_build()\r\n\r\n_cfg_read = False\r\n\r\ndef _ensure_cfg_read():\r\n    global _cfg_read\r\n    if not _cfg_read:\r\n        from ..resources import finder\r\n        backport_package = __name__.rsplit('.', 1)[0]\r\n        _finder = finder(backport_package)\r\n        _cfgfile = _finder.find('sysconfig.cfg')\r\n        assert _cfgfile, 'sysconfig.cfg exists'\r\n        with _cfgfile.as_stream() as s:\r\n            _SCHEMES.readfp(s)\r\n        if _PYTHON_BUILD:\r\n            for scheme in ('posix_prefix', 'posix_home'):\r\n                _SCHEMES.set(scheme, 'include', '{srcdir}/Include')\r\n                _SCHEMES.set(scheme, 'platinclude', '{projectbase}/.')\r\n\r\n        _cfg_read = True\r\n\r\n\r\n_SCHEMES = configparser.RawConfigParser()\r\n_VAR_REPL = re.compile(r'\\{([^{]*?)\\}')\r\n\r\ndef _expand_globals(config):\r\n    _ensure_cfg_read()\r\n    if config.has_section('globals'):\r\n        globals = config.items('globals')\r\n    else:\r\n        globals = tuple()\r\n\r\n    sections = config.sections()\r\n    for section in sections:\r\n        if section == 'globals':\r\n            continue\r\n        for option, value in globals:\r\n            if config.has_option(section, option):\r\n                continue\r\n            config.set(section, option, value)\r\n    config.remove_section('globals')\r\n\r\n    # now expanding local variables defined in the cfg file\r\n    #\r\n    for section in config.sections():\r\n        variables = dict(config.items(section))\r\n\r\n        def _replacer(matchobj):\r\n            name = matchobj.group(1)\r\n            if name in variables:\r\n                return variables[name]\r\n            return matchobj.group(0)\r\n\r\n        for option, value in config.items(section):\r\n            config.set(section, option, _VAR_REPL.sub(_replacer, value))\r\n\r\n#_expand_globals(_SCHEMES)\r\n\r\n # FIXME don't rely on sys.version here, its format is an implementation detail\r\n # of CPython, use sys.version_info or sys.hexversion\r\n_PY_VERSION = sys.version.split()[0]\r\n_PY_VERSION_SHORT = sys.version[:3]\r\n_PY_VERSION_SHORT_NO_DOT = _PY_VERSION[0] + _PY_VERSION[2]\r\n_PREFIX = os.path.normpath(sys.prefix)\r\n_EXEC_PREFIX = os.path.normpath(sys.exec_prefix)\r\n_CONFIG_VARS = None\r\n_USER_BASE = None\r\n\r\n\r\ndef _subst_vars(path, local_vars):\r\n    \"\"\"In the string `path`, replace tokens like {some.thing} with the\r\n    corresponding value from the map `local_vars`.\r\n\r\n    If there is no corresponding value, leave the token unchanged.\r\n    \"\"\"\r\n    def _replacer(matchobj):\r\n        name = matchobj.group(1)\r\n        if name in local_vars:\r\n            return local_vars[name]\r\n        elif name in os.environ:\r\n            return os.environ[name]\r\n        return matchobj.group(0)\r\n    return _VAR_REPL.sub(_replacer, path)\r\n\r\n\r\ndef _extend_dict(target_dict, other_dict):\r\n    target_keys = target_dict.keys()\r\n    for key, value in other_dict.items():\r\n        if key in target_keys:\r\n            continue\r\n        target_dict[key] = value\r\n\r\n\r\ndef _expand_vars(scheme, vars):\r\n    res = {}\r\n    if vars is None:\r\n        vars = {}\r\n    _extend_dict(vars, get_config_vars())\r\n\r\n    for key, value in _SCHEMES.items(scheme):\r\n        if os.name in ('posix', 'nt'):\r\n            value = os.path.expanduser(value)\r\n        res[key] = os.path.normpath(_subst_vars(value, vars))\r\n    return res\r\n\r\n\r\ndef format_value(value, vars):\r\n    def _replacer(matchobj):\r\n        name = matchobj.group(1)\r\n        if name in vars:\r\n            return vars[name]\r\n        return matchobj.group(0)\r\n    return _VAR_REPL.sub(_replacer, value)\r\n\r\n\r\ndef _get_default_scheme():\r\n    if os.name == 'posix':\r\n        # the default scheme for posix is posix_prefix\r\n        return 'posix_prefix'\r\n    return os.name\r\n\r\n\r\ndef _getuserbase():\r\n    env_base = os.environ.get(\"PYTHONUSERBASE\", None)\r\n\r\n    def joinuser(*args):\r\n        return os.path.expanduser(os.path.join(*args))\r\n\r\n    # what about 'os2emx', 'riscos' ?\r\n    if os.name == \"nt\":\r\n        base = os.environ.get(\"APPDATA\") or \"~\"\r\n        if env_base:\r\n            return env_base\r\n        else:\r\n            return joinuser(base, \"Python\")\r\n\r\n    if sys.platform == \"darwin\":\r\n        framework = get_config_var(\"PYTHONFRAMEWORK\")\r\n        if framework:\r\n            if env_base:\r\n                return env_base\r\n            else:\r\n                return joinuser(\"~\", \"Library\", framework, \"%d.%d\" %\r\n                                sys.version_info[:2])\r\n\r\n    if env_base:\r\n        return env_base\r\n    else:\r\n        return joinuser(\"~\", \".local\")\r\n\r\n\r\ndef _parse_makefile(filename, vars=None):\r\n    \"\"\"Parse a Makefile-style file.\r\n\r\n    A dictionary containing name/value pairs is returned.  If an\r\n    optional dictionary is passed in as the second argument, it is\r\n    used instead of a new dictionary.\r\n    \"\"\"\r\n    # Regexes needed for parsing Makefile (and similar syntaxes,\r\n    # like old-style Setup files).\r\n    _variable_rx = re.compile(r\"([a-zA-Z][a-zA-Z0-9_]+)\\s*=\\s*(.*)\")\r\n    _findvar1_rx = re.compile(r\"\\$\\(([A-Za-z][A-Za-z0-9_]*)\\)\")\r\n    _findvar2_rx = re.compile(r\"\\${([A-Za-z][A-Za-z0-9_]*)}\")\r\n\r\n    if vars is None:\r\n        vars = {}\r\n    done = {}\r\n    notdone = {}\r\n\r\n    with codecs.open(filename, encoding='utf-8', errors=\"surrogateescape\") as f:\r\n        lines = f.readlines()\r\n\r\n    for line in lines:\r\n        if line.startswith('#') or line.strip() == '':\r\n            continue\r\n        m = _variable_rx.match(line)\r\n        if m:\r\n            n, v = m.group(1, 2)\r\n            v = v.strip()\r\n            # `$$' is a literal `$' in make\r\n            tmpv = v.replace('$$', '')\r\n\r\n            if \"$\" in tmpv:\r\n                notdone[n] = v\r\n            else:\r\n                try:\r\n                    v = int(v)\r\n                except ValueError:\r\n                    # insert literal `$'\r\n                    done[n] = v.replace('$$', '$')\r\n                else:\r\n                    done[n] = v\r\n\r\n    # do variable interpolation here\r\n    variables = list(notdone.keys())\r\n\r\n    # Variables with a 'PY_' prefix in the makefile. These need to\r\n    # be made available without that prefix through sysconfig.\r\n    # Special care is needed to ensure that variable expansion works, even\r\n    # if the expansion uses the name without a prefix.\r\n    renamed_variables = ('CFLAGS', 'LDFLAGS', 'CPPFLAGS')\r\n\r\n    while len(variables) > 0:\r\n        for name in tuple(variables):\r\n            value = notdone[name]\r\n            m = _findvar1_rx.search(value) or _findvar2_rx.search(value)\r\n            if m is not None:\r\n                n = m.group(1)\r\n                found = True\r\n                if n in done:\r\n                    item = str(done[n])\r\n                elif n in notdone:\r\n                    # get it on a subsequent round\r\n                    found = False\r\n                elif n in os.environ:\r\n                    # do it like make: fall back to environment\r\n                    item = os.environ[n]\r\n\r\n                elif n in renamed_variables:\r\n                    if (name.startswith('PY_') and\r\n                        name[3:] in renamed_variables):\r\n                        item = \"\"\r\n\r\n                    elif 'PY_' + n in notdone:\r\n                        found = False\r\n\r\n                    else:\r\n                        item = str(done['PY_' + n])\r\n\r\n                else:\r\n                    done[n] = item = \"\"\r\n\r\n                if found:\r\n                    after = value[m.end():]\r\n                    value = value[:m.start()] + item + after\r\n                    if \"$\" in after:\r\n                        notdone[name] = value\r\n                    else:\r\n                        try:\r\n                            value = int(value)\r\n                        except ValueError:\r\n                            done[name] = value.strip()\r\n                        else:\r\n                            done[name] = value\r\n                        variables.remove(name)\r\n\r\n                        if (name.startswith('PY_') and\r\n                            name[3:] in renamed_variables):\r\n\r\n                            name = name[3:]\r\n                            if name not in done:\r\n                                done[name] = value\r\n\r\n            else:\r\n                # bogus variable reference (e.g. \"prefix=$/opt/python\");\r\n                # just drop it since we can't deal\r\n                done[name] = value\r\n                variables.remove(name)\r\n\r\n    # strip spurious spaces\r\n    for k, v in done.items():\r\n        if isinstance(v, str):\r\n            done[k] = v.strip()\r\n\r\n    # save the results in the global dictionary\r\n    vars.update(done)\r\n    return vars\r\n\r\n\r\ndef get_makefile_filename():\r\n    \"\"\"Return the path of the Makefile.\"\"\"\r\n    if _PYTHON_BUILD:\r\n        return os.path.join(_PROJECT_BASE, \"Makefile\")\r\n    if hasattr(sys, 'abiflags'):\r\n        config_dir_name = 'config-%s%s' % (_PY_VERSION_SHORT, sys.abiflags)\r\n    else:\r\n        config_dir_name = 'config'\r\n    return os.path.join(get_path('stdlib'), config_dir_name, 'Makefile')\r\n\r\n\r\ndef _init_posix(vars):\r\n    \"\"\"Initialize the module as appropriate for POSIX systems.\"\"\"\r\n    # load the installed Makefile:\r\n    makefile = get_makefile_filename()\r\n    try:\r\n        _parse_makefile(makefile, vars)\r\n    except IOError as e:\r\n        msg = \"invalid Python installation: unable to open %s\" % makefile\r\n        if hasattr(e, \"strerror\"):\r\n            msg = msg + \" (%s)\" % e.strerror\r\n        raise IOError(msg)\r\n    # load the installed pyconfig.h:\r\n    config_h = get_config_h_filename()\r\n    try:\r\n        with open(config_h) as f:\r\n            parse_config_h(f, vars)\r\n    except IOError as e:\r\n        msg = \"invalid Python installation: unable to open %s\" % config_h\r\n        if hasattr(e, \"strerror\"):\r\n            msg = msg + \" (%s)\" % e.strerror\r\n        raise IOError(msg)\r\n    # On AIX, there are wrong paths to the linker scripts in the Makefile\r\n    # -- these paths are relative to the Python source, but when installed\r\n    # the scripts are in another directory.\r\n    if _PYTHON_BUILD:\r\n        vars['LDSHARED'] = vars['BLDSHARED']\r\n\r\n\r\ndef _init_non_posix(vars):\r\n    \"\"\"Initialize the module as appropriate for NT\"\"\"\r\n    # set basic install directories\r\n    vars['LIBDEST'] = get_path('stdlib')\r\n    vars['BINLIBDEST'] = get_path('platstdlib')\r\n    vars['INCLUDEPY'] = get_path('include')\r\n    vars['SO'] = '.pyd'\r\n    vars['EXE'] = '.exe'\r\n    vars['VERSION'] = _PY_VERSION_SHORT_NO_DOT\r\n    vars['BINDIR'] = os.path.dirname(_safe_realpath(sys.executable))\r\n\r\n#\r\n# public APIs\r\n#\r\n\r\n\r\ndef parse_config_h(fp, vars=None):\r\n    \"\"\"Parse a config.h-style file.\r\n\r\n    A dictionary containing name/value pairs is returned.  If an\r\n    optional dictionary is passed in as the second argument, it is\r\n    used instead of a new dictionary.\r\n    \"\"\"\r\n    if vars is None:\r\n        vars = {}\r\n    define_rx = re.compile(\"#define ([A-Z][A-Za-z0-9_]+) (.*)\\n\")\r\n    undef_rx = re.compile(\"/[*] #undef ([A-Z][A-Za-z0-9_]+) [*]/\\n\")\r\n\r\n    while True:\r\n        line = fp.readline()\r\n        if not line:\r\n            break\r\n        m = define_rx.match(line)\r\n        if m:\r\n            n, v = m.group(1, 2)\r\n            try:\r\n                v = int(v)\r\n            except ValueError:\r\n                pass\r\n            vars[n] = v\r\n        else:\r\n            m = undef_rx.match(line)\r\n            if m:\r\n                vars[m.group(1)] = 0\r\n    return vars\r\n\r\n\r\ndef get_config_h_filename():\r\n    \"\"\"Return the path of pyconfig.h.\"\"\"\r\n    if _PYTHON_BUILD:\r\n        if os.name == \"nt\":\r\n            inc_dir = os.path.join(_PROJECT_BASE, \"PC\")\r\n        else:\r\n            inc_dir = _PROJECT_BASE\r\n    else:\r\n        inc_dir = get_path('platinclude')\r\n    return os.path.join(inc_dir, 'pyconfig.h')\r\n\r\n\r\ndef get_scheme_names():\r\n    \"\"\"Return a tuple containing the schemes names.\"\"\"\r\n    return tuple(sorted(_SCHEMES.sections()))\r\n\r\n\r\ndef get_path_names():\r\n    \"\"\"Return a tuple containing the paths names.\"\"\"\r\n    # xxx see if we want a static list\r\n    return _SCHEMES.options('posix_prefix')\r\n\r\n\r\ndef get_paths(scheme=_get_default_scheme(), vars=None, expand=True):\r\n    \"\"\"Return a mapping containing an install scheme.\r\n\r\n    ``scheme`` is the install scheme name. If not provided, it will\r\n    return the default scheme for the current platform.\r\n    \"\"\"\r\n    _ensure_cfg_read()\r\n    if expand:\r\n        return _expand_vars(scheme, vars)\r\n    else:\r\n        return dict(_SCHEMES.items(scheme))\r\n\r\n\r\ndef get_path(name, scheme=_get_default_scheme(), vars=None, expand=True):\r\n    \"\"\"Return a path corresponding to the scheme.\r\n\r\n    ``scheme`` is the install scheme name.\r\n    \"\"\"\r\n    return get_paths(scheme, vars, expand)[name]\r\n\r\n\r\ndef get_config_vars(*args):\r\n    \"\"\"With no arguments, return a dictionary of all configuration\r\n    variables relevant for the current platform.\r\n\r\n    On Unix, this means every variable defined in Python's installed Makefile;\r\n    On Windows and Mac OS it's a much smaller set.\r\n\r\n    With arguments, return a list of values that result from looking up\r\n    each argument in the configuration variable dictionary.\r\n    \"\"\"\r\n    global _CONFIG_VARS\r\n    if _CONFIG_VARS is None:\r\n        _CONFIG_VARS = {}\r\n        # Normalized versions of prefix and exec_prefix are handy to have;\r\n        # in fact, these are the standard versions used most places in the\r\n        # distutils2 module.\r\n        _CONFIG_VARS['prefix'] = _PREFIX\r\n        _CONFIG_VARS['exec_prefix'] = _EXEC_PREFIX\r\n        _CONFIG_VARS['py_version'] = _PY_VERSION\r\n        _CONFIG_VARS['py_version_short'] = _PY_VERSION_SHORT\r\n        _CONFIG_VARS['py_version_nodot'] = _PY_VERSION[0] + _PY_VERSION[2]\r\n        _CONFIG_VARS['base'] = _PREFIX\r\n        _CONFIG_VARS['platbase'] = _EXEC_PREFIX\r\n        _CONFIG_VARS['projectbase'] = _PROJECT_BASE\r\n        try:\r\n            _CONFIG_VARS['abiflags'] = sys.abiflags\r\n        except AttributeError:\r\n            # sys.abiflags may not be defined on all platforms.\r\n            _CONFIG_VARS['abiflags'] = ''\r\n\r\n        if os.name in ('nt', 'os2'):\r\n            _init_non_posix(_CONFIG_VARS)\r\n        if os.name == 'posix':\r\n            _init_posix(_CONFIG_VARS)\r\n        # Setting 'userbase' is done below the call to the\r\n        # init function to enable using 'get_config_var' in\r\n        # the init-function.\r\n        if sys.version >= '2.6':\r\n            _CONFIG_VARS['userbase'] = _getuserbase()\r\n\r\n        if 'srcdir' not in _CONFIG_VARS:\r\n            _CONFIG_VARS['srcdir'] = _PROJECT_BASE\r\n        else:\r\n            _CONFIG_VARS['srcdir'] = _safe_realpath(_CONFIG_VARS['srcdir'])\r\n\r\n        # Convert srcdir into an absolute path if it appears necessary.\r\n        # Normally it is relative to the build directory.  However, during\r\n        # testing, for example, we might be running a non-installed python\r\n        # from a different directory.\r\n        if _PYTHON_BUILD and os.name == \"posix\":\r\n            base = _PROJECT_BASE\r\n            try:\r\n                cwd = os.getcwd()\r\n            except OSError:\r\n                cwd = None\r\n            if (not os.path.isabs(_CONFIG_VARS['srcdir']) and\r\n                base != cwd):\r\n                # srcdir is relative and we are not in the same directory\r\n                # as the executable. Assume executable is in the build\r\n                # directory and make srcdir absolute.\r\n                srcdir = os.path.join(base, _CONFIG_VARS['srcdir'])\r\n                _CONFIG_VARS['srcdir'] = os.path.normpath(srcdir)\r\n\r\n        if sys.platform == 'darwin':\r\n            kernel_version = os.uname()[2]  # Kernel version (8.4.3)\r\n            major_version = int(kernel_version.split('.')[0])\r\n\r\n            if major_version < 8:\r\n                # On Mac OS X before 10.4, check if -arch and -isysroot\r\n                # are in CFLAGS or LDFLAGS and remove them if they are.\r\n                # This is needed when building extensions on a 10.3 system\r\n                # using a universal build of python.\r\n                for key in ('LDFLAGS', 'BASECFLAGS',\r\n                        # a number of derived variables. These need to be\r\n                        # patched up as well.\r\n                        'CFLAGS', 'PY_CFLAGS', 'BLDSHARED'):\r\n                    flags = _CONFIG_VARS[key]\r\n                    flags = re.sub(r'-arch\\s+\\w+\\s', ' ', flags)\r\n                    flags = re.sub('-isysroot [^ \\t]*', ' ', flags)\r\n                    _CONFIG_VARS[key] = flags\r\n            else:\r\n                # Allow the user to override the architecture flags using\r\n                # an environment variable.\r\n                # NOTE: This name was introduced by Apple in OSX 10.5 and\r\n                # is used by several scripting languages distributed with\r\n                # that OS release.\r\n                if 'ARCHFLAGS' in os.environ:\r\n                    arch = os.environ['ARCHFLAGS']\r\n                    for key in ('LDFLAGS', 'BASECFLAGS',\r\n                        # a number of derived variables. These need to be\r\n                        # patched up as well.\r\n                        'CFLAGS', 'PY_CFLAGS', 'BLDSHARED'):\r\n\r\n                        flags = _CONFIG_VARS[key]\r\n                        flags = re.sub(r'-arch\\s+\\w+\\s', ' ', flags)\r\n                        flags = flags + ' ' + arch\r\n                        _CONFIG_VARS[key] = flags\r\n\r\n                # If we're on OSX 10.5 or later and the user tries to\r\n                # compiles an extension using an SDK that is not present\r\n                # on the current machine it is better to not use an SDK\r\n                # than to fail.\r\n                #\r\n                # The major usecase for this is users using a Python.org\r\n                # binary installer  on OSX 10.6: that installer uses\r\n                # the 10.4u SDK, but that SDK is not installed by default\r\n                # when you install Xcode.\r\n                #\r\n                CFLAGS = _CONFIG_VARS.get('CFLAGS', '')\r\n                m = re.search(r'-isysroot\\s+(\\S+)', CFLAGS)\r\n                if m is not None:\r\n                    sdk = m.group(1)\r\n                    if not os.path.exists(sdk):\r\n                        for key in ('LDFLAGS', 'BASECFLAGS',\r\n                             # a number of derived variables. These need to be\r\n                             # patched up as well.\r\n                            'CFLAGS', 'PY_CFLAGS', 'BLDSHARED'):\r\n\r\n                            flags = _CONFIG_VARS[key]\r\n                            flags = re.sub(r'-isysroot\\s+\\S+(\\s|$)', ' ', flags)\r\n                            _CONFIG_VARS[key] = flags\r\n\r\n    if args:\r\n        vals = []\r\n        for name in args:\r\n            vals.append(_CONFIG_VARS.get(name))\r\n        return vals\r\n    else:\r\n        return _CONFIG_VARS\r\n\r\n\r\ndef get_config_var(name):\r\n    \"\"\"Return the value of a single variable using the dictionary returned by\r\n    'get_config_vars()'.\r\n\r\n    Equivalent to get_config_vars().get(name)\r\n    \"\"\"\r\n    return get_config_vars().get(name)\r\n\r\n\r\ndef get_platform():\r\n    \"\"\"Return a string that identifies the current platform.\r\n\r\n    This is used mainly to distinguish platform-specific build directories and\r\n    platform-specific built distributions.  Typically includes the OS name\r\n    and version and the architecture (as supplied by 'os.uname()'),\r\n    although the exact information included depends on the OS; eg. for IRIX\r\n    the architecture isn't particularly important (IRIX only runs on SGI\r\n    hardware), but for Linux the kernel version isn't particularly\r\n    important.\r\n\r\n    Examples of returned values:\r\n       linux-i586\r\n       linux-alpha (?)\r\n       solaris-2.6-sun4u\r\n       irix-5.3\r\n       irix64-6.2\r\n\r\n    Windows will return one of:\r\n       win-amd64 (64bit Windows on AMD64 (aka x86_64, Intel64, EM64T, etc)\r\n       win-ia64 (64bit Windows on Itanium)\r\n       win32 (all others - specifically, sys.platform is returned)\r\n\r\n    For other non-POSIX platforms, currently just returns 'sys.platform'.\r\n    \"\"\"\r\n    if os.name == 'nt':\r\n        # sniff sys.version for architecture.\r\n        prefix = \" bit (\"\r\n        i = sys.version.find(prefix)\r\n        if i == -1:\r\n            return sys.platform\r\n        j = sys.version.find(\")\", i)\r\n        look = sys.version[i+len(prefix):j].lower()\r\n        if look == 'amd64':\r\n            return 'win-amd64'\r\n        if look == 'itanium':\r\n            return 'win-ia64'\r\n        return sys.platform\r\n\r\n    if os.name != \"posix\" or not hasattr(os, 'uname'):\r\n        # XXX what about the architecture? NT is Intel or Alpha,\r\n        # Mac OS is M68k or PPC, etc.\r\n        return sys.platform\r\n\r\n    # Try to distinguish various flavours of Unix\r\n    osname, host, release, version, machine = os.uname()\r\n\r\n    # Convert the OS name to lowercase, remove '/' characters\r\n    # (to accommodate BSD/OS), and translate spaces (for \"Power Macintosh\")\r\n    osname = osname.lower().replace('/', '')\r\n    machine = machine.replace(' ', '_')\r\n    machine = machine.replace('/', '-')\r\n\r\n    if osname[:5] == \"linux\":\r\n        # At least on Linux/Intel, 'machine' is the processor --\r\n        # i386, etc.\r\n        # XXX what about Alpha, SPARC, etc?\r\n        return  \"%s-%s\" % (osname, machine)\r\n    elif osname[:5] == \"sunos\":\r\n        if release[0] >= \"5\":           # SunOS 5 == Solaris 2\r\n            osname = \"solaris\"\r\n            release = \"%d.%s\" % (int(release[0]) - 3, release[2:])\r\n        # fall through to standard osname-release-machine representation\r\n    elif osname[:4] == \"irix\":              # could be \"irix64\"!\r\n        return \"%s-%s\" % (osname, release)\r\n    elif osname[:3] == \"aix\":\r\n        return \"%s-%s.%s\" % (osname, version, release)\r\n    elif osname[:6] == \"cygwin\":\r\n        osname = \"cygwin\"\r\n        rel_re = re.compile(r'[\\d.]+')\r\n        m = rel_re.match(release)\r\n        if m:\r\n            release = m.group()\r\n    elif osname[:6] == \"darwin\":\r\n        #\r\n        # For our purposes, we'll assume that the system version from\r\n        # distutils' perspective is what MACOSX_DEPLOYMENT_TARGET is set\r\n        # to. This makes the compatibility story a bit more sane because the\r\n        # machine is going to compile and link as if it were\r\n        # MACOSX_DEPLOYMENT_TARGET.\r\n        cfgvars = get_config_vars()\r\n        macver = cfgvars.get('MACOSX_DEPLOYMENT_TARGET')\r\n\r\n        if True:\r\n            # Always calculate the release of the running machine,\r\n            # needed to determine if we can build fat binaries or not.\r\n\r\n            macrelease = macver\r\n            # Get the system version. Reading this plist is a documented\r\n            # way to get the system version (see the documentation for\r\n            # the Gestalt Manager)\r\n            try:\r\n                f = open('/System/Library/CoreServices/SystemVersion.plist')\r\n            except IOError:\r\n                # We're on a plain darwin box, fall back to the default\r\n                # behaviour.\r\n                pass\r\n            else:\r\n                try:\r\n                    m = re.search(r'<key>ProductUserVisibleVersion</key>\\s*'\r\n                                  r'<string>(.*?)</string>', f.read())\r\n                finally:\r\n                    f.close()\r\n                if m is not None:\r\n                    macrelease = '.'.join(m.group(1).split('.')[:2])\r\n                # else: fall back to the default behaviour\r\n\r\n        if not macver:\r\n            macver = macrelease\r\n\r\n        if macver:\r\n            release = macver\r\n            osname = \"macosx\"\r\n\r\n            if ((macrelease + '.') >= '10.4.' and\r\n                '-arch' in get_config_vars().get('CFLAGS', '').strip()):\r\n                # The universal build will build fat binaries, but not on\r\n                # systems before 10.4\r\n                #\r\n                # Try to detect 4-way universal builds, those have machine-type\r\n                # 'universal' instead of 'fat'.\r\n\r\n                machine = 'fat'\r\n                cflags = get_config_vars().get('CFLAGS')\r\n\r\n                archs = re.findall(r'-arch\\s+(\\S+)', cflags)\r\n                archs = tuple(sorted(set(archs)))\r\n\r\n                if len(archs) == 1:\r\n                    machine = archs[0]\r\n                elif archs == ('i386', 'ppc'):\r\n                    machine = 'fat'\r\n                elif archs == ('i386', 'x86_64'):\r\n                    machine = 'intel'\r\n                elif archs == ('i386', 'ppc', 'x86_64'):\r\n                    machine = 'fat3'\r\n                elif archs == ('ppc64', 'x86_64'):\r\n                    machine = 'fat64'\r\n                elif archs == ('i386', 'ppc', 'ppc64', 'x86_64'):\r\n                    machine = 'universal'\r\n                else:\r\n                    raise ValueError(\r\n                       \"Don't know machine value for archs=%r\" % (archs,))\r\n\r\n            elif machine == 'i386':\r\n                # On OSX the machine type returned by uname is always the\r\n                # 32-bit variant, even if the executable architecture is\r\n                # the 64-bit variant\r\n                if sys.maxsize >= 2**32:\r\n                    machine = 'x86_64'\r\n\r\n            elif machine in ('PowerPC', 'Power_Macintosh'):\r\n                # Pick a sane name for the PPC architecture.\r\n                # See 'i386' case\r\n                if sys.maxsize >= 2**32:\r\n                    machine = 'ppc64'\r\n                else:\r\n                    machine = 'ppc'\r\n\r\n    return \"%s-%s-%s\" % (osname, release, machine)\r\n\r\n\r\ndef get_python_version():\r\n    return _PY_VERSION_SHORT\r\n\r\n\r\ndef _print_dict(title, data):\r\n    for index, (key, value) in enumerate(sorted(data.items())):\r\n        if index == 0:\r\n            print('%s: ' % (title))\r\n        print('\\t%s = \"%s\"' % (key, value))\r\n\r\n\r\ndef _main():\r\n    \"\"\"Display all information sysconfig detains.\"\"\"\r\n    print('Platform: \"%s\"' % get_platform())\r\n    print('Python version: \"%s\"' % get_python_version())\r\n    print('Current installation scheme: \"%s\"' % _get_default_scheme())\r\n    print()\r\n    _print_dict('Paths', get_paths())\r\n    print()\r\n    _print_dict('Variables', get_config_vars())\r\n\r\n\r\nif __name__ == '__main__':\r\n    _main()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- python/venv/Lib/site-packages/pip-19.0.3-py3.6.egg/pip/_vendor/distlib/_backport/sysconfig.py	(revision 6a8b7af096866f8263e86a218298e3390d52a632)
++++ python/venv/Lib/site-packages/pip-19.0.3-py3.6.egg/pip/_vendor/distlib/_backport/sysconfig.py	(date 1602135610647)
+@@ -564,7 +564,7 @@
+                 # than to fail.
+                 #
+                 # The major usecase for this is users using a Python.org
+-                # binary installer  on OSX 10.6: that installer uses
++                # binary installer  on OSX 10.6-链表: that installer uses
+                 # the 10.4u SDK, but that SDK is not installed by default
+                 # when you install Xcode.
+                 #
+Index: python/venv/Lib/site-packages/pip-19.0.3-py3.6.egg/pip/_internal/pep425tags.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"Generate and work with PEP 425 Compatibility Tags.\"\"\"\r\nfrom __future__ import absolute_import\r\n\r\nimport distutils.util\r\nimport logging\r\nimport platform\r\nimport re\r\nimport sys\r\nimport sysconfig\r\nimport warnings\r\nfrom collections import OrderedDict\r\n\r\nimport pip._internal.utils.glibc\r\nfrom pip._internal.utils.compat import get_extension_suffixes\r\nfrom pip._internal.utils.typing import MYPY_CHECK_RUNNING\r\n\r\nif MYPY_CHECK_RUNNING:\r\n    from typing import (  # noqa: F401\r\n        Tuple, Callable, List, Optional, Union, Dict\r\n    )\r\n\r\n    Pep425Tag = Tuple[str, str, str]\r\n\r\nlogger = logging.getLogger(__name__)\r\n\r\n_osx_arch_pat = re.compile(r'(.+)_(\\d+)_(\\d+)_(.+)')\r\n\r\n\r\ndef get_config_var(var):\r\n    # type: (str) -> Optional[str]\r\n    try:\r\n        return sysconfig.get_config_var(var)\r\n    except IOError as e:  # Issue #1074\r\n        warnings.warn(\"{}\".format(e), RuntimeWarning)\r\n        return None\r\n\r\n\r\ndef get_abbr_impl():\r\n    # type: () -> str\r\n    \"\"\"Return abbreviated implementation name.\"\"\"\r\n    if hasattr(sys, 'pypy_version_info'):\r\n        pyimpl = 'pp'\r\n    elif sys.platform.startswith('java'):\r\n        pyimpl = 'jy'\r\n    elif sys.platform == 'cli':\r\n        pyimpl = 'ip'\r\n    else:\r\n        pyimpl = 'cp'\r\n    return pyimpl\r\n\r\n\r\ndef get_impl_ver():\r\n    # type: () -> str\r\n    \"\"\"Return implementation version.\"\"\"\r\n    impl_ver = get_config_var(\"py_version_nodot\")\r\n    if not impl_ver or get_abbr_impl() == 'pp':\r\n        impl_ver = ''.join(map(str, get_impl_version_info()))\r\n    return impl_ver\r\n\r\n\r\ndef get_impl_version_info():\r\n    # type: () -> Tuple[int, ...]\r\n    \"\"\"Return sys.version_info-like tuple for use in decrementing the minor\r\n    version.\"\"\"\r\n    if get_abbr_impl() == 'pp':\r\n        # as per https://github.com/pypa/pip/issues/2882\r\n        # attrs exist only on pypy\r\n        return (sys.version_info[0],\r\n                sys.pypy_version_info.major,  # type: ignore\r\n                sys.pypy_version_info.minor)  # type: ignore\r\n    else:\r\n        return sys.version_info[0], sys.version_info[1]\r\n\r\n\r\ndef get_impl_tag():\r\n    # type: () -> str\r\n    \"\"\"\r\n    Returns the Tag for this specific implementation.\r\n    \"\"\"\r\n    return \"{}{}\".format(get_abbr_impl(), get_impl_ver())\r\n\r\n\r\ndef get_flag(var, fallback, expected=True, warn=True):\r\n    # type: (str, Callable[..., bool], Union[bool, int], bool) -> bool\r\n    \"\"\"Use a fallback method for determining SOABI flags if the needed config\r\n    var is unset or unavailable.\"\"\"\r\n    val = get_config_var(var)\r\n    if val is None:\r\n        if warn:\r\n            logger.debug(\"Config variable '%s' is unset, Python ABI tag may \"\r\n                         \"be incorrect\", var)\r\n        return fallback()\r\n    return val == expected\r\n\r\n\r\ndef get_abi_tag():\r\n    # type: () -> Optional[str]\r\n    \"\"\"Return the ABI tag based on SOABI (if available) or emulate SOABI\r\n    (CPython 2, PyPy).\"\"\"\r\n    soabi = get_config_var('SOABI')\r\n    impl = get_abbr_impl()\r\n    if not soabi and impl in {'cp', 'pp'} and hasattr(sys, 'maxunicode'):\r\n        d = ''\r\n        m = ''\r\n        u = ''\r\n        if get_flag('Py_DEBUG',\r\n                    lambda: hasattr(sys, 'gettotalrefcount'),\r\n                    warn=(impl == 'cp')):\r\n            d = 'd'\r\n        if get_flag('WITH_PYMALLOC',\r\n                    lambda: impl == 'cp',\r\n                    warn=(impl == 'cp')):\r\n            m = 'm'\r\n        if get_flag('Py_UNICODE_SIZE',\r\n                    lambda: sys.maxunicode == 0x10ffff,\r\n                    expected=4,\r\n                    warn=(impl == 'cp' and\r\n                          sys.version_info < (3, 3))) \\\r\n                and sys.version_info < (3, 3):\r\n            u = 'u'\r\n        abi = '%s%s%s%s%s' % (impl, get_impl_ver(), d, m, u)\r\n    elif soabi and soabi.startswith('cpython-'):\r\n        abi = 'cp' + soabi.split('-')[1]\r\n    elif soabi:\r\n        abi = soabi.replace('.', '_').replace('-', '_')\r\n    else:\r\n        abi = None\r\n    return abi\r\n\r\n\r\ndef _is_running_32bit():\r\n    # type: () -> bool\r\n    return sys.maxsize == 2147483647\r\n\r\n\r\ndef get_platform():\r\n    # type: () -> str\r\n    \"\"\"Return our platform name 'win32', 'linux_x86_64'\"\"\"\r\n    if sys.platform == 'darwin':\r\n        # distutils.util.get_platform() returns the release based on the value\r\n        # of MACOSX_DEPLOYMENT_TARGET on which Python was built, which may\r\n        # be significantly older than the user's current machine.\r\n        release, _, machine = platform.mac_ver()\r\n        split_ver = release.split('.')\r\n\r\n        if machine == \"x86_64\" and _is_running_32bit():\r\n            machine = \"i386\"\r\n        elif machine == \"ppc64\" and _is_running_32bit():\r\n            machine = \"ppc\"\r\n\r\n        return 'macosx_{}_{}_{}'.format(split_ver[0], split_ver[1], machine)\r\n\r\n    # XXX remove distutils dependency\r\n    result = distutils.util.get_platform().replace('.', '_').replace('-', '_')\r\n    if result == \"linux_x86_64\" and _is_running_32bit():\r\n        # 32 bit Python program (running on a 64 bit Linux): pip should only\r\n        # install and run 32 bit compiled extensions in that case.\r\n        result = \"linux_i686\"\r\n\r\n    return result\r\n\r\n\r\ndef is_manylinux1_compatible():\r\n    # type: () -> bool\r\n    # Only Linux, and only x86-64 / i686\r\n    if get_platform() not in {\"linux_x86_64\", \"linux_i686\"}:\r\n        return False\r\n\r\n    # Check for presence of _manylinux module\r\n    try:\r\n        import _manylinux\r\n        return bool(_manylinux.manylinux1_compatible)\r\n    except (ImportError, AttributeError):\r\n        # Fall through to heuristic check below\r\n        pass\r\n\r\n    # Check glibc version. CentOS 5 uses glibc 2.5.\r\n    return pip._internal.utils.glibc.have_compatible_glibc(2, 5)\r\n\r\n\r\ndef is_manylinux2010_compatible():\r\n    # type: () -> bool\r\n    # Only Linux, and only x86-64 / i686\r\n    if get_platform() not in {\"linux_x86_64\", \"linux_i686\"}:\r\n        return False\r\n\r\n    # Check for presence of _manylinux module\r\n    try:\r\n        import _manylinux\r\n        return bool(_manylinux.manylinux2010_compatible)\r\n    except (ImportError, AttributeError):\r\n        # Fall through to heuristic check below\r\n        pass\r\n\r\n    # Check glibc version. CentOS 6 uses glibc 2.12.\r\n    return pip._internal.utils.glibc.have_compatible_glibc(2, 12)\r\n\r\n\r\ndef get_darwin_arches(major, minor, machine):\r\n    # type: (int, int, str) -> List[str]\r\n    \"\"\"Return a list of supported arches (including group arches) for\r\n    the given major, minor and machine architecture of an macOS machine.\r\n    \"\"\"\r\n    arches = []\r\n\r\n    def _supports_arch(major, minor, arch):\r\n        # type: (int, int, str) -> bool\r\n        # Looking at the application support for macOS versions in the chart\r\n        # provided by https://en.wikipedia.org/wiki/OS_X#Versions it appears\r\n        # our timeline looks roughly like:\r\n        #\r\n        # 10.0 - Introduces ppc support.\r\n        # 10.4 - Introduces ppc64, i386, and x86_64 support, however the ppc64\r\n        #        and x86_64 support is CLI only, and cannot be used for GUI\r\n        #        applications.\r\n        # 10.5 - Extends ppc64 and x86_64 support to cover GUI applications.\r\n        # 10.6 - Drops support for ppc64\r\n        # 10.7 - Drops support for ppc\r\n        #\r\n        # Given that we do not know if we're installing a CLI or a GUI\r\n        # application, we must be conservative and assume it might be a GUI\r\n        # application and behave as if ppc64 and x86_64 support did not occur\r\n        # until 10.5.\r\n        #\r\n        # Note: The above information is taken from the \"Application support\"\r\n        #       column in the chart not the \"Processor support\" since I believe\r\n        #       that we care about what instruction sets an application can use\r\n        #       not which processors the OS supports.\r\n        if arch == 'ppc':\r\n            return (major, minor) <= (10, 5)\r\n        if arch == 'ppc64':\r\n            return (major, minor) == (10, 5)\r\n        if arch == 'i386':\r\n            return (major, minor) >= (10, 4)\r\n        if arch == 'x86_64':\r\n            return (major, minor) >= (10, 5)\r\n        if arch in groups:\r\n            for garch in groups[arch]:\r\n                if _supports_arch(major, minor, garch):\r\n                    return True\r\n        return False\r\n\r\n    groups = OrderedDict([\r\n        (\"fat\", (\"i386\", \"ppc\")),\r\n        (\"intel\", (\"x86_64\", \"i386\")),\r\n        (\"fat64\", (\"x86_64\", \"ppc64\")),\r\n        (\"fat32\", (\"x86_64\", \"i386\", \"ppc\")),\r\n    ])  # type: Dict[str, Tuple[str, ...]]\r\n\r\n    if _supports_arch(major, minor, machine):\r\n        arches.append(machine)\r\n\r\n    for garch in groups:\r\n        if machine in groups[garch] and _supports_arch(major, minor, garch):\r\n            arches.append(garch)\r\n\r\n    arches.append('universal')\r\n\r\n    return arches\r\n\r\n\r\ndef get_all_minor_versions_as_strings(version_info):\r\n    # type: (Tuple[int, ...]) -> List[str]\r\n    versions = []\r\n    major = version_info[:-1]\r\n    # Support all previous minor Python versions.\r\n    for minor in range(version_info[-1], -1, -1):\r\n        versions.append(''.join(map(str, major + (minor,))))\r\n    return versions\r\n\r\n\r\ndef get_supported(\r\n    versions=None,  # type: Optional[List[str]]\r\n    noarch=False,  # type: bool\r\n    platform=None,  # type: Optional[str]\r\n    impl=None,  # type: Optional[str]\r\n    abi=None  # type: Optional[str]\r\n):\r\n    # type: (...) -> List[Pep425Tag]\r\n    \"\"\"Return a list of supported tags for each version specified in\r\n    `versions`.\r\n\r\n    :param versions: a list of string versions, of the form [\"33\", \"32\"],\r\n        or None. The first version will be assumed to support our ABI.\r\n    :param platform: specify the exact platform you want valid\r\n        tags for, or None. If None, use the local system platform.\r\n    :param impl: specify the exact implementation you want valid\r\n        tags for, or None. If None, use the local interpreter impl.\r\n    :param abi: specify the exact abi you want valid\r\n        tags for, or None. If None, use the local interpreter abi.\r\n    \"\"\"\r\n    supported = []\r\n\r\n    # Versions must be given with respect to the preference\r\n    if versions is None:\r\n        version_info = get_impl_version_info()\r\n        versions = get_all_minor_versions_as_strings(version_info)\r\n\r\n    impl = impl or get_abbr_impl()\r\n\r\n    abis = []  # type: List[str]\r\n\r\n    abi = abi or get_abi_tag()\r\n    if abi:\r\n        abis[0:0] = [abi]\r\n\r\n    abi3s = set()\r\n    for suffix in get_extension_suffixes():\r\n        if suffix.startswith('.abi'):\r\n            abi3s.add(suffix.split('.', 2)[1])\r\n\r\n    abis.extend(sorted(list(abi3s)))\r\n\r\n    abis.append('none')\r\n\r\n    if not noarch:\r\n        arch = platform or get_platform()\r\n        arch_prefix, arch_sep, arch_suffix = arch.partition('_')\r\n        if arch.startswith('macosx'):\r\n            # support macosx-10.6-intel on macosx-10.9-x86_64\r\n            match = _osx_arch_pat.match(arch)\r\n            if match:\r\n                name, major, minor, actual_arch = match.groups()\r\n                tpl = '{}_{}_%i_%s'.format(name, major)\r\n                arches = []\r\n                for m in reversed(range(int(minor) + 1)):\r\n                    for a in get_darwin_arches(int(major), m, actual_arch):\r\n                        arches.append(tpl % (m, a))\r\n            else:\r\n                # arch pattern didn't match (?!)\r\n                arches = [arch]\r\n        elif arch_prefix == 'manylinux2010':\r\n            # manylinux1 wheels run on most manylinux2010 systems with the\r\n            # exception of wheels depending on ncurses. PEP 571 states\r\n            # manylinux1 wheels should be considered manylinux2010 wheels:\r\n            # https://www.python.org/dev/peps/pep-0571/#backwards-compatibility-with-manylinux1-wheels\r\n            arches = [arch, 'manylinux1' + arch_sep + arch_suffix]\r\n        elif platform is None:\r\n            arches = []\r\n            if is_manylinux2010_compatible():\r\n                arches.append('manylinux2010' + arch_sep + arch_suffix)\r\n            if is_manylinux1_compatible():\r\n                arches.append('manylinux1' + arch_sep + arch_suffix)\r\n            arches.append(arch)\r\n        else:\r\n            arches = [arch]\r\n\r\n        # Current version, current API (built specifically for our Python):\r\n        for abi in abis:\r\n            for arch in arches:\r\n                supported.append(('%s%s' % (impl, versions[0]), abi, arch))\r\n\r\n        # abi3 modules compatible with older version of Python\r\n        for version in versions[1:]:\r\n            # abi3 was introduced in Python 3.2\r\n            if version in {'31', '30'}:\r\n                break\r\n            for abi in abi3s:   # empty set if not Python 3\r\n                for arch in arches:\r\n                    supported.append((\"%s%s\" % (impl, version), abi, arch))\r\n\r\n        # Has binaries, does not use the Python API:\r\n        for arch in arches:\r\n            supported.append(('py%s' % (versions[0][0]), 'none', arch))\r\n\r\n    # No abi / arch, but requires our implementation:\r\n    supported.append(('%s%s' % (impl, versions[0]), 'none', 'any'))\r\n    # Tagged specifically as being cross-version compatible\r\n    # (with just the major version specified)\r\n    supported.append(('%s%s' % (impl, versions[0][0]), 'none', 'any'))\r\n\r\n    # No abi / arch, generic Python\r\n    for i, version in enumerate(versions):\r\n        supported.append(('py%s' % (version,), 'none', 'any'))\r\n        if i == 0:\r\n            supported.append(('py%s' % (version[0]), 'none', 'any'))\r\n\r\n    return supported\r\n\r\n\r\nimplementation_tag = get_impl_tag()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- python/venv/Lib/site-packages/pip-19.0.3-py3.6.egg/pip/_internal/pep425tags.py	(revision 6a8b7af096866f8263e86a218298e3390d52a632)
++++ python/venv/Lib/site-packages/pip-19.0.3-py3.6.egg/pip/_internal/pep425tags.py	(date 1602135686989)
+@@ -214,8 +214,8 @@
+         #        and x86_64 support is CLI only, and cannot be used for GUI
+         #        applications.
+         # 10.5 - Extends ppc64 and x86_64 support to cover GUI applications.
+-        # 10.6 - Drops support for ppc64
+-        # 10.7 - Drops support for ppc
++        # 10.6-链表 - Drops support for ppc64
++        # 10.7-链表-指针 - Drops support for ppc
+         #
+         # Given that we do not know if we're installing a CLI or a GUI
+         # application, we must be conservative and assume it might be a GUI
+@@ -317,7 +317,7 @@
+         arch = platform or get_platform()
+         arch_prefix, arch_sep, arch_suffix = arch.partition('_')
+         if arch.startswith('macosx'):
+-            # support macosx-10.6-intel on macosx-10.9-x86_64
++            # support macosx-10.6-链表-intel on macosx-10.9-x86_64
+             match = _osx_arch_pat.match(arch)
+             if match:
+                 name, major, minor, actual_arch = match.groups()
+diff --git 归并排序.py old-zgd/归并排序.py
+rename from 归并排序.py
+rename to old-zgd/归并排序.py
+diff --git 移动零.py old-zgd/移动零.py
+rename from 移动零.py
+rename to old-zgd/移动零.py
+diff --git 二分查找树---进阶.py old-zgd/二分查找树---进阶.py
+rename from 二分查找树---进阶.py
+rename to old-zgd/二分查找树---进阶.py
+diff --git 汉明重量(位1的个数).py old-zgd/汉明重量(位1的个数).py
+rename from 汉明重量(位1的个数).py
+rename to old-zgd/汉明重量(位1的个数).py
+diff --git 选择排序.py old-zgd/选择排序.py
+rename from 选择排序.py
+rename to old-zgd/选择排序.py
+diff --git 144.二叉树的前序遍历.py old-zgd/144.二叉树的前序遍历.py
+rename from 144.二叉树的前序遍历.py
+rename to old-zgd/144.二叉树的前序遍历.py
+diff --git linktree.py old-zgd/linktree.py
+rename from linktree.py
+rename to old-zgd/linktree.py
+diff --git ceshi.py old-zgd/ceshi.py
+rename from ceshi.py
+rename to old-zgd/ceshi.py
+diff --git 后序遍历(递归和非递归).py old-zgd/后序遍历(递归和非递归).py
+rename from 后序遍历(递归和非递归).py
+rename to old-zgd/后序遍历(递归和非递归).py
+diff --git 42.接雨水.py old-zgd/42.接雨水.py
+rename from 42.接雨水.py
+rename to old-zgd/42.接雨水.py
+diff --git 94.二叉树的中序遍历.py old-zgd/94.二叉树的中序遍历.py
+rename from 94.二叉树的中序遍历.py
+rename to old-zgd/94.二叉树的中序遍历.py
+diff --git 61.旋转链表.py old-zgd/61.旋转链表.py
+rename from 61.旋转链表.py
+rename to old-zgd/61.旋转链表.py
+diff --git 中序遍历(递归和非递归).py old-zgd/中序遍历(递归和非递归).py
+rename from 中序遍历(递归和非递归).py
+rename to old-zgd/中序遍历(递归和非递归).py
+diff --git 快排---交换指针.py old-zgd/快排---交换指针.py
+rename from 快排---交换指针.py
+rename to old-zgd/快排---交换指针.py
+diff --git 208.实现Trie(前缀树).py old-zgd/208.实现Trie(前缀树).py
+rename from 208.实现Trie(前缀树).py
+rename to old-zgd/208.实现Trie(前缀树).py
+diff --git 斐波那契数列.py old-zgd/斐波那契数列.py
+rename from 斐波那契数列.py
+rename to old-zgd/斐波那契数列.py
+diff --git 汉明距离.py old-zgd/汉明距离.py
+rename from 汉明距离.py
+rename to old-zgd/汉明距离.py
+diff --git 汉明距离总和.py old-zgd/汉明距离总和.py
+rename from 汉明距离总和.py
+rename to old-zgd/汉明距离总和.py
+diff --git binary_search_tree.py old-zgd/binary_search_tree.py
+rename from binary_search_tree.py
+rename to old-zgd/binary_search_tree.py
+diff --git 总结要点.txt old-zgd/总结要点.txt
+rename from 总结要点.txt
+rename to old-zgd/总结要点.txt
+diff --git 有序数组去重(删除排序数组中的重复项).py old-zgd/有序数组去重(删除排序数组中的重复项).py
+rename from 有序数组去重(删除排序数组中的重复项).py
+rename to old-zgd/有序数组去重(删除排序数组中的重复项).py
+diff --git 102.二叉树的层序遍历.py old-zgd/102.二叉树的层序遍历.py
+rename from 102.二叉树的层序遍历.py
+rename to old-zgd/102.二叉树的层序遍历.py
+diff --git 前序遍历(递归和非递归).py old-zgd/前序遍历(递归和非递归).py
+rename from 前序遍历(递归和非递归).py
+rename to old-zgd/前序遍历(递归和非递归).py
+diff --git 145.二叉树的后序遍历.py old-zgd/145.二叉树的后序遍历.py
+rename from 145.二叉树的后序遍历.py
+rename to old-zgd/145.二叉树的后序遍历.py
+diff --git 最大公约数.py old-zgd/最大公约数.py
+rename from 最大公约数.py
+rename to old-zgd/最大公约数.py
+diff --git 测试面试题.py old-zgd/测试面试题.py
+rename from 测试面试题.py
+rename to old-zgd/测试面试题.py
+diff --git 两个数组的交集.py old-zgd/两个数组的交集.py
+rename from 两个数组的交集.py
+rename to old-zgd/两个数组的交集.py
+diff --git 最长回文子串.py old-zgd/最长回文子串.py
+rename from 最长回文子串.py
+rename to old-zgd/最长回文子串.py
+diff --git 合并两个有序链表.py old-zgd/合并两个有序链表.py
+rename from 合并两个有序链表.py
+rename to old-zgd/合并两个有序链表.py
+diff --git 最接近的三数之和.py old-zgd/最接近的三数之和.py
+rename from 最接近的三数之和.py
+rename to old-zgd/最接近的三数之和.py
+diff --git 删除指定元素(移除元素).py old-zgd/删除指定元素(移除元素).py
+rename from 删除指定元素(移除元素).py
+rename to old-zgd/删除指定元素(移除元素).py
+diff --git 三数之和.py old-zgd/三数之和.py
+rename from 三数之和.py
+rename to old-zgd/三数之和.py
+diff --git 入环点(环形链表II).py old-zgd/入环点(环形链表II).py
+rename from 入环点(环形链表II).py
+rename to old-zgd/入环点(环形链表II).py
+diff --git 两数之和.py old-zgd/两数之和.py
+rename from 两数之和.py
+rename to old-zgd/两数之和.py
+diff --git 数组插入排序.py old-zgd/数组插入排序.py
+rename from 数组插入排序.py
+rename to old-zgd/数组插入排序.py
+diff --git 合并两个有序数组.py old-zgd/合并两个有序数组.py
+rename from 合并两个有序数组.py
+rename to old-zgd/合并两个有序数组.py
+diff --git test7.9.py old-zgd/test7.9.py
+rename from test7.9.py
+rename to old-zgd/test7.9.py
+diff --git 判断链表是否有环(面试题02.08.环路检测).py old-zgd/判断链表是否有环(面试题02.08.环路检测).py
+rename from 判断链表是否有环(面试题02.08.环路检测).py
+rename to old-zgd/判断链表是否有环(面试题02.08.环路检测).py
+diff --git 最长公共前缀.py old-zgd/最长公共前缀.py
+rename from 最长公共前缀.py
+rename to old-zgd/最长公共前缀.py
+diff --git linkList练习.py old-zgd/linkList练习.py
+rename from linkList练习.py
+rename to old-zgd/linkList练习.py
+diff --git 二分查找树.py old-zgd/二分查找树.py
+rename from 二分查找树.py
+rename to old-zgd/二分查找树.py
+diff --git data_zgd/pycharm/10.12/test.py data_zgd/pycharm/10.12/test.py
+diff --git 链表插入排序.py old-zgd/链表插入排序.py
+rename from 链表插入排序.py
+rename to old-zgd/链表插入排序.py
+diff --git 冒泡排序.py old-zgd/冒泡排序.py
+rename from 冒泡排序.py
+rename to old-zgd/冒泡排序.py
+diff --git 插入排序.py old-zgd/插入排序.py
+rename from 插入排序.py
+rename to old-zgd/插入排序.py
+diff --git heap.py old-zgd/heap.py
+rename from heap.py
+rename to old-zgd/heap.py
+diff --git 只出现一次的数字.py old-zgd/只出现一次的数字.py
+rename from 只出现一次的数字.py
+rename to old-zgd/只出现一次的数字.py
+diff --git 测试打印图形二叉树.py old-zgd/测试打印图形二叉树.py
+rename from 测试打印图形二叉树.py
+rename to old-zgd/测试打印图形二叉树.py
