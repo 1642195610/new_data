@@ -30,7 +30,7 @@ def merge2(left, right):
     r_len = len(right)
     l = 0
     r = 0
-    while l < l_len and r < r_len :
+    while l < l_len and r < r_len:
         if left[l] > right[r]:
             result += [right[r]]
             r += 1

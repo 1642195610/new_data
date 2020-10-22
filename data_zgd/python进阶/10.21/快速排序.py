@@ -1,6 +1,7 @@
 from randomList import randomList
 
 
+# 双指针
 def swap(list, start, q):
     list[start], list[q] = list[q], list[start]
 

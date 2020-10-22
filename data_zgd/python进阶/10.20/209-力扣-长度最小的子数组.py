@@ -37,7 +37,7 @@ class Solution:
                 left += 1
         return res if res != float("inf") else 0
 
-    def minSubArrayLen2(self, s: int, nums: List[int]) -> int: # 滑动窗口
+    def minSubArrayLen2(self, s: int, nums: List[int]) -> int:  # 滑动窗口
         left, sum, res = 0, 0, float("inf")
         for right in range(len(nums)):
             sum += nums[right]
