@@ -41,8 +41,9 @@ if __name__ == '__main__':
     t.insert('something')
     t.insert('somewhere')
     print(t.root.data)
-    world = "something"
-    world2 = "somethings"
+    # world = "something"
+    world = "some"
+    world2 = "something"
     print(f"要查找的单词: {world}, 是否存在 {t.search(world)}")
     print(f"要查找的单词: {world2}, 是否存在 {t.search(world2)}")
     prefix = 'so'
