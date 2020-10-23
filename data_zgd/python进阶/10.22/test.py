@@ -57,12 +57,12 @@ def mergesort2(nums):
 
 
 if __name__ == '__main__':
-    list = randomList.randomList(10)
-    print(f"未排序: {list}")
-    result = mergesort(list)
+    list1 = randomList.randomList(10)
+    print(f"未排序: {list1}")
+    result = mergesort(list1)
     print(f"排序后: {result}")
-    print(f"未排序: {list}")
-    result2 = mergesort2(list)
+    print(f"未排序: {list1}")
+    result2 = mergesort2(list1)
     print(f"排序后: {result2}")
     print()
 
@@ -87,23 +87,23 @@ def partition(list, start, end):
     return q
 
 
-def quicksort(list, start, end):
+def quick_sort(list, start, end):
     if start >= end:
         return
     mid = partition(list, start, end)
-    quicksort(list, start, mid - 1)
-    quicksort(list, mid + 1, end)
+    quick_sort(list, start, mid - 1)
+    quick_sort(list, mid + 1, end)
 
 
 if __name__ == '__main__':
-    list = randomList.randomList(10)
-    print(f"未排序: {list}")
-    quicksort(list, 0, len(list) - 1)
-    print(f"排序后: {list}")
+    list1 = randomList.randomList(10)
+    print(f"未排序: {list1}")
+    quick_sort(list1, 0, len(list1) - 1)
+    print(f"排序后: {list1}")
 
 
 # 移动零
-def movezero(nums):
+def move_zero(nums):
     f = 0
     s = 0
     while f < len(nums):
@@ -119,8 +119,8 @@ def movezero(nums):
 
 
 if __name__ == '__main__':
-    list = [1,2,3,0,3,0,4]
+    list1 = [1, 2, 3, 0, 3, 0, 4]
     print()
-    print(list)
-    result = movezero(list)
+    print(list1)
+    result = move_zero(list1)
     print(result)

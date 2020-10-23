@@ -2,28 +2,28 @@ from randomList import randomList
 
 
 # 单指针遍历法
-def partition(list, start, end):
-    pivot = list[start]
+def partition(list_list, start, end):
+    pivot = list_list[start]
     mark = start
     for i in range(start + 1, end + 1):
-        if list[i] < pivot:
+        if list_list[i] < pivot:
             mark += 1
-            list[mark], list[i] = list[i], list[mark]
-    list[start] = list[mark]
-    list[mark] = pivot
+            list_list[mark], list_list[i] = list_list[i], list_list[mark]
+    list_list[start] = list_list[mark]
+    list_list[mark] = pivot
     return mark
 
 
-def quicksort(list, start, end):
+def quick_sort(list_list, start, end):
     if start >= end:
         return
-    mid = partition(list, start, end)
-    quicksort(list, start, mid - 1)
-    quicksort(list, mid + 1, end)
+    mid = partition(list_list, start, end)
+    quick_sort(list_list, start, mid - 1)
+    quick_sort(list_list, mid + 1, end)
 
 
 if __name__ == '__main__':
-    list = randomList.randomList(10)
-    print(list)
-    quicksort(list, 0, len(list) - 1)
-    print(list)
+    list1 = randomList.randomList(10)
+    print(list1)
+    quick_sort(list1, 0, len(list1) - 1)
+    print(list1)
